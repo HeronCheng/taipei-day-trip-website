@@ -13,13 +13,13 @@ def attractions():
     if page == None and keyword != None:
         return jsonify({
             "error":True,
-            "message":"500 伺服器內部錯誤"
-        }),500
+            "message":"400 客戶端錯誤"
+        }),400
     elif keyword == None and page == None:
         return jsonify({
             "error":True,
-            "message":"500 伺服器內部錯誤"
-        }),500
+            "message":"400 伺服器內部錯誤"
+        }),400
     elif keyword == None and page != None:
         if int(page)>4:
             return jsonify({
