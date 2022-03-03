@@ -9,7 +9,10 @@ def attractions():
     cnx=cnxpool.get_connection()
     cursor=cnx.cursor()           
     keyword=request.args.get("keyword",None)
-    page=request.args.get("page",None)  
+    page=request.args.get("page",None)
+    nextpage=str(int(page)+1)
+    number=int(page)*12
+    realPage=str(number)  
     if page == None and keyword != None:
         return jsonify({
             "error":True,
@@ -27,9 +30,7 @@ def attractions():
                 "message":"500 伺服器內部錯誤"
             }),500
         else:    
-            nextpage=str(int(page)+1)
-            number=int(page)*12
-            realPage=str(number)
+            
             if page=='4':
                 a=10
                 nextpage=None
