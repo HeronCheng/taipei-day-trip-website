@@ -30,7 +30,6 @@ def attractions():
                 "message":"500 伺服器內部錯誤"
             }),500
         else:    
-            
             if page=='4':
                 a=10
                 nextpage=None
@@ -83,7 +82,7 @@ def attractions():
         result=cursor.fetchall()
         length=len(result)
         pages=length//12
-        lastData=length%12
+        lastData=str(length%12)
         if int(page)>pages:
             return jsonify({
                 "error":True,
@@ -132,10 +131,10 @@ def attractions():
                 response=jsonify(text)    
             return(response)
         else:
-            if page==pages:
+            if int(page)==pages:
                 a=lastData
                 nextpage=None
-                cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE '%"+keyword+"%' LIMIT"+lastData+"OFFSET"+realPage+";")
+                cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE '%"+keyword+"%' LIMIT "+lastData+" OFFSET "+realPage+";")
                 result=cursor.fetchall()
             else:
                 a=12
@@ -145,7 +144,7 @@ def attractions():
             cnx.close()
             i=0
             list=[]
-            while i<a:
+            while i<int(a):
                 id=int(result[i][0])
                 name=result[i][1]
                 category=result[i][2]
