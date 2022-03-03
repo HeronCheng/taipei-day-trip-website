@@ -24,13 +24,20 @@ def attractions():
             "message":"400 客戶端錯誤"
         }),400
     elif keyword == None and page != None:
-        if int(page)>4:
+        cursor.execute("SELECT count(*) FROM `attraction`;")
+        result1=cursor.fetchall()
+        allData=int(result1[0][0])
+        pages=allData//12
+        lastData=str(allData%12)
+        if int(page)> pages:
+            cursor.close()
+            cnx.close()
             return jsonify({
                 "error":True,
                 "message":"500 伺服器內部錯誤"
             }),500
         else:    
-            if page=='4':
+            if int(page)==pages:
                 a=10
                 nextpage=None
                 cursor.execute("SELECT * FROM `attraction` LIMIT 10 OFFSET "+realPage+";")
@@ -78,27 +85,29 @@ def attractions():
                 response=jsonify(text)    
             return(response)
     else:  
-        cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE '%"+keyword+"%';")
-        result=cursor.fetchall()
-        length=len(result)
-        pages=length//12
-        lastData=str(length%12)
+        cursor.execute("SELECT count(*) FROM `attraction` WHERE `name` LIKE '%"+keyword+"%';")
+        result1=cursor.fetchall()
+        allData=int(result1[0][0])
+        pages=allData//12
+        lastData=str(allData%12)
         if int(page)>pages:
             return jsonify({
                 "error":True,
                 "message":"500 伺服器內部錯誤"
             }),500
-        elif length==0:
+        elif allData==0:
             return jsonify({
                 "error":True,
                 "message":"500 伺服器內部錯誤"
             }),500
-        elif length<12:
+        elif allData<12:
+            cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE '%"+keyword+"%';")
+            result=cursor.fetchall()
             cursor.close()
             cnx.close()
             i=0
             list=[]
-            while i<length:
+            while i<allData:
                 id=int(result[i][0])
                 name=result[i][1]
                 category=result[i][2]
