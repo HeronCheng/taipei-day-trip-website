@@ -1,8 +1,10 @@
 from flask import Blueprint,jsonify,current_app
+from flask_cors import CORS
 from cnxpool import cnxpool
 import re
 
 Attraction=Blueprint("Attraction",__name__)
+CORS(Attraction)
 
 @Attraction.route("/api/attraction/<attractionId>",methods=["GET"])
 def attraction(attractionId):
