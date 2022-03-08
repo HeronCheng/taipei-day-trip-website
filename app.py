@@ -1,9 +1,12 @@
 from flask import *
 from attractions import Attractions
 from attraction import Attraction
+from flask_cors import CORS
+
 app=Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+CORS(app)
 
 app.register_blueprint(Attractions)
 app.register_blueprint(Attraction)
