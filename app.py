@@ -2,10 +2,17 @@ from pickle import TRUE
 from flask import *
 from attractions import Attractions
 from attraction import Attraction
+<<<<<<< HEAD
 
 app=Flask(__name__,static_folder='/static')
+=======
+from flask_cors import CORS
+
+app=Flask(__name__)
+>>>>>>> 10ea89759ab26e2da6af9c1eb9ba571242638e84
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+CORS(app)
 
 
 

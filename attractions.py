@@ -1,8 +1,10 @@
 from flask import Blueprint,request,jsonify,current_app
+from flask_cors import CORS
 from cnxpool import cnxpool
 from definition import loops
 
 Attractions=Blueprint("Attractions",__name__)
+CORS(Attractions)
 
 @Attractions.route("/api/attractions",methods=["GET"])
 def attractions():
