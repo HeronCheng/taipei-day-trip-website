@@ -8,11 +8,10 @@ app=Flask(__name__,static_folder='/static')
 
 from flask_cors import CORS
 
-<<<<<<< HEAD
-=======
+
 app=Flask(__name__)
 
->>>>>>> fe897b8b7ee74072fcbedf3ee2758af594525b00
+
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 CORS(app)
