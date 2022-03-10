@@ -11,6 +11,7 @@ body{
     position: fixed;
     width: 100%;
     background-color:#FFFFFF;
+    z-index: 30;
 }
 .titlemain{
     width: 1200px;
@@ -109,6 +110,7 @@ input{
     position: relative;
     left: 54%;
     bottom: 73%;
+    z-index: 10;
 }
 .img1{
     width: 30px;
