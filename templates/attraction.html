@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/bx-building-house.svg">
+    <title>台北一日遊</title>
+    <link href="../static/attraction.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../static/attraction.js"></script>
+</head>
+<body onload="getattraction()">
+    <div class="title">
+        <nav class="titlemain">
+            <div class="lefttitle">台北一日遊</div>
+            <div class="space"></div>
+            <div class="righttitle1">預定行程</div>
+            <div class="righttitle2">登入/註冊</div>
+        </nav>
+    </div>
+    <div class="upper">
+    <div id="pic">
+        <img src="../static/btn_leftArrow.png" id="pic3" onmouseover="enter1()" onmouseout="leave1()" onclick="switchto1()">
+        <img src="../static/btn_rightArrow.png" id="pic4" onmouseover="enter2()" onmouseout="leave2()" onclick="switchto2()">
+        <div id="ball"></div>
+    </div>
+    <div class="parttwo">
+        <div id="titlename"></div>
+        <div id="subtitle"><span id="mrt"> at </span></div>
+        <div id="booking">
+            <div class="b_title">訂購導覽行程</div>
+            <div class="b_slogan">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+            <div class="b_date">選擇日期：<input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"></div>
+            <div class="b_time">選擇時間：
+                <span onclick="changetime1()" class="halfday">
+                    <img src="../static/Ellipse 2.png" id="green1">
+                    <img src="../static/Ellipse 1.png" id="white1">
+                </span><span class="half_day1">上半天</span>
+                <span onclick="changetime2()" class="halfday">
+                    <img src="../static/Ellipse 2.png" id="green2" >
+                    <img src="../static/Ellipse 1.png" id="white2">
+                </span><span class="half_day2">下半天</span>
+            </div>
+            <div class="b_fee">導覽費用：<span id="money2000">新台幣 2000 元</span><span id="money2500">新台幣 2500 元</span></div>
+            <button class="btn">開始預訂行程</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="line"></div>
+    <div class="lower">
+        <div id="description"></div>
+        <div id="address">景點地址:<div id="address1"></div></div>
+        <div id="transport">交通方式:<div id="transport1"></div></div>
+    </div>    
+    <div class="footer">
+        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+</body>
+</html>
