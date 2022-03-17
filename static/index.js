@@ -1,6 +1,8 @@
 let next_page;
 let data=null;
+let loading=false;
 function getData(page){
+    loading=true;
     fetch("http://18.180.51.21:3000/api/attractions?page="+page+"&keyword=")
     .then(function(response){
         return response.json();
@@ -17,16 +19,20 @@ function getData(page){
             title=result.data[i].name;
             mrt=result.data[i].mrt;
             category=result.data[i].category;
+            id=result.data[i].id;
 
             let bigdiv=document.createElement("div");
-
+            let hyperlink=document.createElement("a");
+            hyperlink.setAttribute("href","/attraction/"+id)
             let img=document.createElement("img");
             img.setAttribute("class","img2")
+            img.setAttribute("id",id)
             img.src=url;
             fragment.appendChild(bigdiv);
             bigdiv.setAttribute("class","bigdiv");
             bigdiv.setAttribute("id","bigdiv");
-            bigdiv.appendChild(img);
+            hyperlink.appendChild(img);
+            bigdiv.appendChild(hyperlink);
 
             let pcTitle=document.createElement("div");
             let textnode=document.createTextNode(title);
@@ -51,28 +57,29 @@ function getData(page){
         }
         let target=document.getElementById("attractions");
         attractions.appendChild(fragment);  
+        loading=false;
 }
 )
 }
      
-function debounce(func, delay=250) {
-    let timer = null;
+// function debounce(func, delay=250) {
+//     let timer = null;
    
-    return () => {
-      let context = this;
-      let args = arguments;
+//     return () => {
+//       let context = this;
+//       let args = arguments;
    
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(context, args);
-      }, delay)
-    }
-  }
+//       clearTimeout(timer);
+//       timer = setTimeout(() => {
+//         func.apply(context, args);
+//       }, delay)
+//     }
+//   }
   
 if (data == null){
-document.addEventListener("scroll", debounce(lazyLoad))
+document.addEventListener("scroll", lazyLoad)
 function lazyLoad() {
-    if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight) {                
+    if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) {                
         if (next_page==null){document.removeEventListener("scroll", lazyLoad)}
         else{getData(next_page);console.log(next_page)};
         }  
@@ -90,6 +97,7 @@ let queryNextpage;
 function query(anotherpage){
     next_page==null;
     data=document.getElementById("query").value;
+    loading=true;
     fetch("http://18.180.51.21:3000/api/attractions?page="+anotherpage+"&keyword="+data)
     .then(function(response){
         return response.json();
@@ -107,11 +115,13 @@ function query(anotherpage){
             title=result.data[i].name;
             mrt=result.data[i].mrt;
             category=result.data[i].category;
+            id=result.data[i].id;
 
             let bigdiv=document.createElement("div");
 
             let img=document.createElement("img");
-            img.setAttribute("class","img2")
+            img.setAttribute("class","img2");
+            img.setAttribute("id",id)
             img.src=url;
             fragment.appendChild(bigdiv);
             bigdiv.setAttribute("class","bigdiv");
@@ -140,13 +150,14 @@ function query(anotherpage){
         }
         let target=document.getElementById("attractions");
         attractions.appendChild(fragment);  
+        loading=false;
 }
 )
 }
 
-document.addEventListener("scroll", debounce(lazyLoad2))
+document.addEventListener("scroll", lazyLoad2)
 function lazyLoad2() {
-    if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight) {                
+    if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) {                
         if (queryNextpage==null){document.removeEventListener("scroll", lazyLoad2)}
         else{query(queryNextpage);console.log(queryNextpage)};
         }  
