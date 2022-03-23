@@ -1,12 +1,29 @@
 let id;
 let number;
 let datalength;
+let preSignin=document.getElementById("preSignin");
+let afterSignin=document.getElementById("afterSignin");
+
 //計算json物件中的元素數量
 function length(obj) {
     return Object.keys(obj).length;
 }
+
 //抓每一頁要呈現的資料
 function getattraction(){
+    //檢查會員登入狀態
+    let req=new XMLHttpRequest();
+    req.open("get","/api/user");
+    req.withCredentials = true;
+    req.send();
+    req.onload=function(){
+        let statusData=JSON.parse(req.responseText);
+        if(statusData!=null){
+            preSignin.style.display="none";
+            afterSignin.style.display="block"
+        }
+    }
+    
     let url=location.href;
     let ary=url.split('/');
     id=ary[4];
@@ -14,7 +31,21 @@ function getattraction(){
     .then(function(response){
         return response.json();
     }).then(function(result){
-        datalength=length(result.data.images);
+        if(result.message=="400 景點編號不正確"){
+            let upper=document.getElementById("upper");
+            let line=document.getElementById("line");
+            let lower=document.getElementById("lower");
+            let footer=document.getElementById("footer");
+            let nodatahere=document.getElementById("nodatahere");
+            upper.innerHTML="";
+            line.innerHTML="";
+            lower.innerHTML="";
+            footer.innerHTML="";
+            footer.style.backgroundColor="white";
+            nodatahere.innerHTML="查無此景點資料";
+        }
+        else{
+            datalength=length(result.data.images);
         for(number=0;number<datalength ; number++){
             let picurl=result.data.images[number];
             let picurl2=document.createElement("img");
@@ -62,8 +93,10 @@ function getattraction(){
         address1.appendChild(address3);
         document.getElementById("transport1");
         transport1.appendChild(transport3);
+        }
     })
 }
+
 //選擇上下半天
 function changetime1(){
     //預設是綠色的
@@ -97,6 +130,7 @@ function changetime2(){
         money2500.style.display='inline-block';
     }
 }
+
 //游標靠近與離開左右箭頭時
 function enter1(){
     let pic3=document.getElementById("pic3");
@@ -114,6 +148,7 @@ function leave2(){
     let pic4=document.getElementById("pic4");
     pic4.style.opacity="0.5";
 }
+
 //圖片輪播處理
 //播放下一張
 let time=0;
@@ -283,6 +318,101 @@ function switchto1(){
             bkspot.style.cssText='display:inline-block';
             let last_bkspot=document.getElementById("bkId"+(datalength-remainder+1));
             last_bkspot.style.cssText='display:none';
+        }
+    }
+}
+
+
+
+let signin=document.getElementById("signin")
+let signup=document.getElementById("signup")
+let dark=document.getElementById("dark")
+//跳出登入視窗且背景轉暗
+function tosignin_up(){
+    signin.style.display="block";
+    dark.style.display="block";
+}
+
+//切換註冊與登入介面
+function toregister() {
+    signin.style.display="none";
+    signup.style.display="block";
+}
+function tosignin() {
+    signin.style.display="block";
+    signup.style.display="none";
+}
+
+//關閉登入視窗
+function darkover(){
+    signin.style.display="none";
+    signup.style.display="none";
+    dark.style.display="none";
+}
+
+
+
+//註冊處理
+function goSignup(){
+    let signup_username=document.getElementById("signup_username").value;
+    let signup_email=document.getElementById("signup_email").value;
+    let signup_password=document.getElementById("signup_password").value;
+    let signup_message=document.getElementById("up_message");
+    let boardSize=document.getElementById("signup");
+    let request=new XMLHttpRequest();
+    request.open("post","/api/user");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("signup_username="+signup_username+"&signup_email="+ signup_email+"&signup_password="+signup_password);
+    request.onload=function(){
+        let data=JSON.parse(request.responseText);
+        if(data.ok==true){
+            signup_message.style.display="block";
+            boardSize.style.height="357px";
+            signup_message.innerHTML="註冊成功";
+        }
+        else{
+            signup_message.style.display="block";
+            boardSize.style.height="357px";
+            signup_message.innerHTML=data.message;
+        }
+    }
+};
+
+
+//登入處理
+function goSignin(){
+    let signin_email=document.getElementById("signin_email").value;
+    let signin_password=document.getElementById("signin_password").value;
+    let signin_message=document.getElementById("in_message");
+    let boardSize=document.getElementById("signin");
+    let request=new XMLHttpRequest();
+    request.open("patch","/api/user");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("signin_email="+ signin_email+"&signin_password="+signin_password);
+    request.onload=function(){
+        let data=JSON.parse(request.responseText);
+        if(data.ok==true){
+            location.reload()
+        }
+        else{
+            signin_message.style.display="block";
+            boardSize.style.height="298px";
+            signin_message.innerHTML=data.message;
+        }
+    }
+}
+
+//登出處理
+function tosignin_out(){
+    let signout_req=new XMLHttpRequest();
+    signout_req.open("delete","/api/user");
+    signout_req.withCredentials = true;
+    signout_req.send();
+    signout_req.onload=function(){
+        let signoutData=JSON.parse(signout_req.responseText);
+        if(signoutData!=null){
+            preSignin.style.display="block";
+            afterSignin.style.display="none"
         }
     }
 }
