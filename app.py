@@ -2,6 +2,7 @@ from pickle import TRUE
 from flask import *
 from attractions import Attractions
 from attraction import Attraction
+from status import Status
 
 
 app=Flask(__name__,static_folder='/static')
@@ -17,9 +18,10 @@ app.config["TEMPLATES_AUTO_RELOAD"]=True
 CORS(app)
 
 
-
 app.register_blueprint(Attractions)
 app.register_blueprint(Attraction)
+app.register_blueprint(Status)
+
 # Pages
 @app.route("/")
 def index():
