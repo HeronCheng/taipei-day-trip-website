@@ -1,9 +1,7 @@
-from asyncio.windows_events import NULL
 from flask import Blueprint,jsonify,request
 from flask_cors import CORS
 from cnxpool import cnxpool
 import requests,json
-import struct,socket
 
 Booking=Blueprint("Booking",__name__)
 
