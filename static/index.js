@@ -255,16 +255,23 @@ function goSignin(){
 
 //登出處理
 function tosignin_out(){
-    let signout_req=new XMLHttpRequest();
-    signout_req.open("delete","/api/user");
-    signout_req.withCredentials = true;
-    signout_req.send();
-    signout_req.onload=function(){
-        let signoutData=JSON.parse(signout_req.responseText);
-        if(signoutData!=null){
-            preSignin.style.display="block";
-            afterSignin.style.display="none"
-        }
+    let delete_req=new XMLHttpRequest();
+    delete_req.open("delete","/api/booking");
+    delete_req.withCredentials = true;
+    delete_req.send();
+    delete_req.onload=function(){
+        let signout_req=new XMLHttpRequest();
+        signout_req.open("delete","/api/user");
+        signout_req.withCredentials = true;
+        signout_req.send();
+        signout_req.onload=function(){
+            let signoutData=JSON.parse(signout_req.responseText);
+            if(signoutData!=null){
+                window.location.href = "/";
+                preSignin.style.display="block";
+                afterSignin.style.display="none"
+            }
+    }
     }
 }
 
