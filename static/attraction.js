@@ -32,7 +32,7 @@ function getattraction(){
     let url=location.href;
     let ary=url.split('/');
     id=ary[4];
-    fetch("http://18.180.51.21:3000/api/attraction/"+id)
+    fetch("/api/attraction/"+id)
     .then(function(response){
         return response.json();
     }).then(function(result){
@@ -43,7 +43,7 @@ function getattraction(){
             let footer=document.getElementById("footer");
             let nodatahere=document.getElementById("nodatahere");
             upper.innerHTML="";
-            line.innerHTML="";
+            line.style.display="none";
             lower.innerHTML="";
             footer.innerHTML="";
             footer.style.backgroundColor="white";
@@ -441,6 +441,7 @@ function trytobook(){
 
 
 //建立新的預定行程
+
 function tobook(){
     event.preventDefault()
     if (statusData.data == null){
