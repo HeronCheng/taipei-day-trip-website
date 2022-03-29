@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+/*導覽列*/
+.title {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 30;
+  border-color: white white #e8e8e8 white;
+  border-width: 1px;
+  border-style: solid;
+}
+.titlemain {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.lefttitle {
+  width: 150px;
+  height: 34px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 34px;
+  color: #448899;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+}
+.space {
+  flex: auto;
+}
+.righttitle1 {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #666666;
+  line-height: 13px;
+}
+.righttitle2 {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #666666;
+  line-height: 13px;
+}
+#afterSignin {
+  display: block;
+}
+/*分隔線*/
+.line {
+  width: 1200px;
+  height: 0px;
+  border: 1px solid #e8e8e8;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 37px;
+  display: block;
+}
+/*input欄位*/
+input {
+  width: 200px;
+  height: 38px;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+}
+/*上方區塊*/
+.first_part {
+  width: 1200px;
+  height: 337px;
+  color: #666666;
+  padding-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.subtitle {
+  padding-top: 100px;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+#nodatahere {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  padding-top: 35px;
+  display: none;
+}
+.booking_data {
+  display: flex;
+}
+.picture {
+  width: 266px;
+  height: 200px;
+}
+#picture {
+  width: 266px;
+  height: 200px;
+  margin-top: 35px;
+  border-radius: 3px;
+}
+.booking_text {
+  margin-left: 22px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  margin-top: 40px;
+}
+.text1 {
+  color: #448899;
+}
+.text2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.text4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.text5 {
+  margin-bottom: 75px;
+}
+.delete_icon {
+  position: absolute;
+  top: 18.5%;
+  right: 23%;
+}
+.delete_icon:hover {
+  cursor: pointer;
+}
+/*中間區塊*/
+.second_part {
+  width: 1200px;
+  height: 307px;
+  padding-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact {
+  color: #666666;
+}
+.contactdata {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+  margin-bottom: 34px;
+  margin-top: 44px;
+}
+.contactname {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+}
+.contactemail {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  margin-top: 29px;
+  margin-bottom: 29px;
+}
+.contactnumber {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+}
+.notice {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  margin-top: 33px;
+  margin-bottom: 45px;
+}
+/*下方區塊*/
+.third_part {
+  width: 1200px;
+  height: 268px;
+  padding-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pay {
+  margin-top: 44px;
+  color: #666666;
+}
+.creditcard {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+.cardnumber {
+  margin-top: 33px;
+  margin-bottom: 29px;
+}
+.expired_date {
+  margin-bottom: 29px;
+}
+.verify_number {
+  margin-bottom: 47px;
+}
+/*確認付款區*/
+.howmuch {
+  margin-left: 67.5%;
+  margin-top: 43px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+}
+#certain {
+  margin-left: 67.5%;
+  margin-top: 25px;
+  margin-bottom: 62px;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  color: #ffffff;
+  width: 173px;
+  height: 36px;
+  background: #448899;
+  border-radius: 5px;
+  border: none;
+}
+/*頁尾*/
+.footer {
+  height: 104px;
+  background-color: #757575;
+}
+.copyright {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 104px;
+}
+
+/*RWD區塊*/
+@media screen and (max-width: 1200px) {
+  .titlemain {
+    width: 900px;
+  }
+  .line {
+    width: 900px;
+  }
+  .first_part {
+    width: 900px;
+  }
+  .second_part {
+    width: 900px;
+  }
+  .third_part {
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .titlemain {
+    width: 630px;
+  }
+  .line {
+    width: 630px;
+  }
+  .first_part {
+    width: 630px;
+  }
+  .second_part {
+    width: 630px;
+  }
+  .third_part {
+    width: 630px;
+  }
+  .text5 {
+    line-height: 19px;
+  }
+  .notice {
+    line-height: 19px;
+  }
+  .delete_icon {
+    right: 0%;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .booking_data {
+    display: block;
+  }
+  .first_part {
+    width: 330px;
+    height: 557px;
+  }
+  .line {
+    width: 330px;
+  }
+  .booking_text {
+    margin-left: 0px;
+  }
+  .delete_icon {
+    top: 68.5%;
+    right: 2%;
+  }
+  .text1 {
+    padding-top: 29px;
+  }
+  .second_part {
+    width: 330px;
+  }
+  .notice {
+    line-height: 26px;
+  }
+  .third_part {
+    width: 330px;
+  }
+}

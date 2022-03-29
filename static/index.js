@@ -3,6 +3,7 @@ let data=null;
 let loading=false;
 let preSignin=document.getElementById("preSignin");
 let afterSignin=document.getElementById("afterSignin");
+let statusData;
 
 //載入首頁的資料
 function getData(page){
@@ -12,10 +13,14 @@ function getData(page){
     req.withCredentials = true;
     req.send();
     req.onload=function(){
-        let statusData=JSON.parse(req.responseText);
-        if(statusData!=null){
+        statusData=JSON.parse(req.responseText);
+        if(statusData.data != null){
             preSignin.style.display="none";
             afterSignin.style.display="block"
+        }
+        else{
+            preSignin.style.display="block";
+            afterSignin.style.display="none"
         }
     }
 
@@ -260,5 +265,17 @@ function tosignin_out(){
             preSignin.style.display="block";
             afterSignin.style.display="none"
         }
+    }
+}
+
+
+//點選導覽列的 預定行程 處理
+function trytobook(){
+    if (statusData.data == null){
+        signin.style.display="block";
+        dark.style.display="block";
+    }
+    else{
+        window.location.href = "/booking";
     }
 }

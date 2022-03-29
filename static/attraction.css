@@ -536,6 +536,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 100%;
   height: 80%;
   text-align: center;
+  z-index: -10;
 }
 .footer {
   height: 104px;

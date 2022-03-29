@@ -3,6 +3,7 @@ from flask import *
 from attractions import Attractions
 from attraction import Attraction
 from status import Status
+from booking import Booking
 
 
 app=Flask(__name__,static_folder='/static')
@@ -21,6 +22,7 @@ CORS(app)
 app.register_blueprint(Attractions)
 app.register_blueprint(Attraction)
 app.register_blueprint(Status)
+app.register_blueprint(Booking)
 
 # Pages
 @app.route("/")
