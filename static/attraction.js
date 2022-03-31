@@ -1,8 +1,6 @@
 let id;
 let number;
 let datalength;
-let preSignin=document.getElementById("preSignin");
-let afterSignin=document.getElementById("afterSignin");
 let statusData;
 
 //計算json物件中的元素數量
@@ -13,6 +11,8 @@ function length(obj) {
 //抓每一頁要呈現的資料
 function getattraction(){
     //檢查會員登入狀態
+    let preSignin=document.getElementById("preSignin");
+    let afterSignin=document.getElementById("afterSignin");
     let req=new XMLHttpRequest();
     req.open("get","/api/user");
     req.withCredentials = true;
@@ -63,11 +63,11 @@ function getattraction(){
             let wtSpot=document.createElement("img");
             wtSpot.setAttribute("id","wtId"+number)
             wtSpot.setAttribute("class","wtspot");
-            wtSpot.src="../static/white circle.png";
+            wtSpot.src="../static/pic/white circle.png";
             let bkSpot=document.createElement("img");
             bkSpot.setAttribute("id","bkId"+number);
             bkSpot.setAttribute("class","bkspot");
-            bkSpot.src="../static/circle current.png";
+            bkSpot.src="../static/pic/circle current.png";
             document.getElementById("ball");
             ball.appendChild(wtSpot);
             ball.appendChild(bkSpot);
@@ -323,108 +323,6 @@ function switchto1(){
     }
 }
 
-
-
-let signin=document.getElementById("signin")
-let signup=document.getElementById("signup")
-let dark=document.getElementById("dark")
-//跳出登入視窗且背景轉暗
-function tosignin_up(){
-    signin.style.display="block";
-    dark.style.display="block";
-}
-
-//切換註冊與登入介面
-function toregister() {
-    signin.style.display="none";
-    signup.style.display="block";
-}
-function tosignin() {
-    signin.style.display="block";
-    signup.style.display="none";
-}
-
-//關閉登入視窗
-function darkover(){
-    signin.style.display="none";
-    signup.style.display="none";
-    dark.style.display="none";
-}
-
-
-
-//註冊處理
-function goSignup(){
-    let signup_username=document.getElementById("signup_username").value;
-    let signup_email=document.getElementById("signup_email").value;
-    let signup_password=document.getElementById("signup_password").value;
-    let signup_message=document.getElementById("up_message");
-    let boardSize=document.getElementById("signup");
-    let request=new XMLHttpRequest();
-    request.open("post","/api/user");
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("signup_username="+signup_username+"&signup_email="+ signup_email+"&signup_password="+signup_password);
-    request.onload=function(){
-        let data=JSON.parse(request.responseText);
-        if(data.ok==true){
-            signup_message.style.display="block";
-            boardSize.style.height="357px";
-            signup_message.innerHTML="註冊成功";
-        }
-        else{
-            signup_message.style.display="block";
-            boardSize.style.height="357px";
-            signup_message.innerHTML=data.message;
-        }
-    }
-};
-
-
-//登入處理
-function goSignin(){
-    let signin_email=document.getElementById("signin_email").value;
-    let signin_password=document.getElementById("signin_password").value;
-    let signin_message=document.getElementById("in_message");
-    let boardSize=document.getElementById("signin");
-    let request=new XMLHttpRequest();
-    request.open("patch","/api/user");
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("signin_email="+ signin_email+"&signin_password="+signin_password);
-    request.onload=function(){
-        let data=JSON.parse(request.responseText);
-        if(data.ok==true){
-            location.reload()
-        }
-        else{
-            signin_message.style.display="block";
-            boardSize.style.height="298px";
-            signin_message.innerHTML=data.message;
-        }
-    }
-}
-
-
-//登出處理
-function tosignin_out(){
-    let delete_req=new XMLHttpRequest();
-    delete_req.open("delete","/api/booking");
-    delete_req.withCredentials = true;
-    delete_req.send();
-    delete_req.onload=function(){
-        let signout_req=new XMLHttpRequest();
-        signout_req.open("delete","/api/user");
-        signout_req.withCredentials = true;
-        signout_req.send();
-        signout_req.onload=function(){
-            let signoutData=JSON.parse(signout_req.responseText);
-            if(signoutData!=null){
-                window.location.href = "/";
-                preSignin.style.display="block";
-                afterSignin.style.display="none"
-            }
-    }
-    }
-}
 
 //點選導覽列的 預定行程 處理
 function trytobook(){

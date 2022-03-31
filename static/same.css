@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+/*頁首*/
+.title {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 30;
+  border-color: white white #e8e8e8 white;
+  border-width: 1px;
+  border-style: solid;
+}
+.titlemain {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.lefttitle {
+  width: 150px;
+  height: 34px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 34px;
+  color: #448899;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+}
+.space {
+  flex: auto;
+}
+.righttitle1 {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #666666;
+  line-height: 13px;
+}
+.righttitle2 {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #666666;
+  line-height: 13px;
+}
+
+/*頁尾*/
+.footer {
+  height: 104px;
+  background-color: #757575;
+}
+.copyright {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 104px;
+}

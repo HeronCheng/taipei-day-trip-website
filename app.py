@@ -4,18 +4,16 @@ from attractions import Attractions
 from attraction import Attraction
 from status import Status
 from booking import Booking
-
-
-app=Flask(__name__,static_folder='/static')
-
 from flask_cors import CORS
+
 
 
 app=Flask(__name__)
 
-
+#Flask讓jsonify返回的json串支援中文顯示
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+
 CORS(app)
 
 
