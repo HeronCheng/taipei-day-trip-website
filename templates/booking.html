@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/bx-building-house.svg">
+    <title>台北一日遊</title>
+    <link href="../static/booking.css" rel="stylesheet"/>
+</head>
+<body onload="checkStatus()">
+    <div class="title">
+        <nav class="titlemain">
+            <a href="/" class="lefttitle">台北一日遊</a>
+            <div class="space"></div>
+            <a class="righttitle1" onclick="trytobook()">預定行程</a>
+            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
+        </nav>
+    </div>
+    <div class="first_part" id="first_part">
+        <div class="subtitle">您好，<span id="username"></span>，待預定的行程如下:</div>
+        <div id="nodatahere"></div>
+        <div class="booking_data" id="first">
+        <div class="picture"><img id="picture"></div>
+        <div class="booking_text">
+            <div class="text1">台北一日遊：<span id="b_title"></span></div>
+            <div class="text2">日期：<span id="b_date"></span></div>
+            <div class="text3">時間：<span id="b_time"></span></div>
+            <div class="text4">費用：新台幣 <span id="b_fee"></span> 元</div>
+            <div class="text5">地點：<span id="b_address"></span></div>
+            <img src="../static/icon_delete.png" class="delete_icon" onclick="deletebooking()">
+        </div>
+        </div>
+    </div>
+    <div class="line" id="line1"></div>
+    <div class="second_part" id="second">
+        <div class="contact">
+        <div class="contactdata">您的聯絡資訊</div>
+        <div class="contactname">聯絡姓名：<input type="text" id="contactperson"></div>
+        <div class="contactemail">連絡信箱：<input type="text" id="contact_email"></div>
+        <div class="contactnumber">手機號碼：<input type="tel"></div>
+        <div class="notice">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
+        </div>
+    </div>
+    <div class="line" id="line2"></div>
+    <div class="third_part" id="third">
+        <div class="pay">
+        <div class="creditcard">信用卡付款資訊</div>
+        <div class="cardnumber">卡片號碼：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="**** **** **** ****"></div>
+        <br/>
+        <div class="expired_date">過期時間：<input type="text" placeholder="MM / YY"></div>
+        <br/>
+        <div class="verify_number">驗證密碼：<input type="text" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="CVV" pattern="[0-9]{3}" ></div>
+        </div>
+    </div>
+    <div class="line" id="line3"></div>
+    <div id="forth">
+    <div class="howmuch">總價：新台幣 <span id="total_fee"></span> 元</div>
+    <button id="certain">確認訂購並付款</button>
+    </div>
+    <div class="footer" id="footer">
+        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+    <script type="text/javascript" src="../static/booking.js"></script>
+</body>
+</html>

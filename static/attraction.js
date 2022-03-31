@@ -3,6 +3,7 @@ let number;
 let datalength;
 let preSignin=document.getElementById("preSignin");
 let afterSignin=document.getElementById("afterSignin");
+let statusData;
 
 //計算json物件中的元素數量
 function length(obj) {
@@ -17,17 +18,21 @@ function getattraction(){
     req.withCredentials = true;
     req.send();
     req.onload=function(){
-        let statusData=JSON.parse(req.responseText);
-        if(statusData!=null){
+        statusData=JSON.parse(req.responseText);
+        if(statusData.data != null){
             preSignin.style.display="none";
             afterSignin.style.display="block"
+        }
+        else{
+            preSignin.style.display="block";
+            afterSignin.style.display="none"
         }
     }
     
     let url=location.href;
     let ary=url.split('/');
     id=ary[4];
-    fetch("http://18.180.51.21:3000/api/attraction/"+id)
+    fetch("/api/attraction/"+id)
     .then(function(response){
         return response.json();
     }).then(function(result){
@@ -38,7 +43,7 @@ function getattraction(){
             let footer=document.getElementById("footer");
             let nodatahere=document.getElementById("nodatahere");
             upper.innerHTML="";
-            line.innerHTML="";
+            line.style.display="none";
             lower.innerHTML="";
             footer.innerHTML="";
             footer.style.backgroundColor="white";
@@ -97,15 +102,17 @@ function getattraction(){
     })
 }
 
+
+
+
+let white1=document.getElementById("white1");
+let green1=document.getElementById("green1");
+let white2=document.getElementById("white2");
+let green2=document.getElementById("green2");
+let money2000=document.getElementById("money2000");
+let money2500=document.getElementById("money2500");
 //選擇上下半天
 function changetime1(){
-    //預設是綠色的
-    let white1=document.getElementById("white1");
-    let green1=document.getElementById("green1");
-    let white2=document.getElementById("white2");
-    let green2=document.getElementById("green2");
-    let money2000=document.getElementById("money2000");
-    let money2500=document.getElementById("money2500");
     if (green1.style.display='inline-block'){
         white1.style.display='none';
         white2.style.display='inline-block';
@@ -115,12 +122,6 @@ function changetime1(){
     };
 }
 function changetime2(){
-    let white2=document.getElementById("white2");
-    let green2=document.getElementById("green2");
-    let white1=document.getElementById("white1");
-    let green1=document.getElementById("green1");
-    let money2000=document.getElementById("money2000");
-    let money2500=document.getElementById("money2500");
     if(white2.style.display='inline-block'){
         white1.style.display='inline-block';
         green1.style.display='none';
@@ -402,17 +403,81 @@ function goSignin(){
     }
 }
 
+
 //登出處理
 function tosignin_out(){
-    let signout_req=new XMLHttpRequest();
-    signout_req.open("delete","/api/user");
-    signout_req.withCredentials = true;
-    signout_req.send();
-    signout_req.onload=function(){
-        let signoutData=JSON.parse(signout_req.responseText);
-        if(signoutData!=null){
-            preSignin.style.display="block";
-            afterSignin.style.display="none"
+    let delete_req=new XMLHttpRequest();
+    delete_req.open("delete","/api/booking");
+    delete_req.withCredentials = true;
+    delete_req.send();
+    delete_req.onload=function(){
+        let signout_req=new XMLHttpRequest();
+        signout_req.open("delete","/api/user");
+        signout_req.withCredentials = true;
+        signout_req.send();
+        signout_req.onload=function(){
+            let signoutData=JSON.parse(signout_req.responseText);
+            if(signoutData!=null){
+                window.location.href = "/";
+                preSignin.style.display="block";
+                afterSignin.style.display="none"
+            }
+    }
+    }
+}
+
+//點選導覽列的 預定行程 處理
+function trytobook(){
+    if (statusData.data == null){
+        signin.style.display="block";
+        dark.style.display="block";
+    }
+    else{
+        window.location.href = "/booking";
+    }
+}
+
+
+
+
+//建立新的預定行程
+
+function tobook(){
+    event.preventDefault()
+    if (statusData.data == null){
+        signin.style.display="block";
+        dark.style.display="block";
+    }
+    else{
+        let url=location.href;
+        let ary=url.split('/');
+        attractionid=ary[4];
+        let b_date=document.getElementById("date").value;
+        let b_time;
+        let b_fee;
+        //檢查是按上半天還是下半天
+        if (green1.style.display=='inline-block'){
+            b_time="上半天";
+            b_fee="2000";
+        }
+        else if(green1.style.display==""){
+            b_time="上半天";
+            b_fee="2000";
+        }
+        else{
+            b_time="下半天";
+            b_fee="2500";
+        }
+        let bookreq=new XMLHttpRequest();
+        bookreq.open("post","/api/booking");
+        bookreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        bookreq.send("id="+attractionid+"&date="+b_date+"&time="+b_time+"&fee="+b_fee);
+        bookreq.onload=function(){
+            let status=JSON.parse(bookreq.responseText);
+            if(status.ok==true){
+                window.location.href = "/booking";
+            }
         }
     }
+    
 }

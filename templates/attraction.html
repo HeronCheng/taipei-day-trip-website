@@ -13,7 +13,7 @@
         <nav class="titlemain">
             <a href="/" class="lefttitle">台北一日遊</a>
             <div class="space"></div>
-            <a class="righttitle1">預定行程</a>
+            <a class="righttitle1" onclick="trytobook()">預定行程</a>
             <a class="righttitle2" onclick="tosignin_up()" id="preSignin">登入/註冊</a>
             <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
         </nav>
@@ -47,11 +47,11 @@
     <div class="parttwo">
         <div id="titlename"></div>
         <div id="subtitle"><span id="mrt"> at </span></div>
-        <div id="booking">
+        <form id="booking" onsubmit="tobook()">
             <div class="b_title">訂購導覽行程</div>
             <div class="b_slogan">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-            <div class="b_date">選擇日期：<input id="date" type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"></div>
-            <div class="b_time">選擇時間：
+            <div class="b_date" >選擇日期：<input id="date" type="date" required></div>
+            <div class="b_time" >選擇時間：
                 <span onclick="changetime1()" class="halfday">
                     <img src="../static/Ellipse 2.png" id="green1">
                     <img src="../static/Ellipse 1.png" id="white1">
@@ -62,8 +62,8 @@
                 </span><span class="half_day2">下半天</span>
             </div>
             <div class="b_fee">導覽費用：<span id="money2000">新台幣 2000 元</span><span id="money2500">新台幣 2500 元</span></div>
-            <button class="btn">開始預訂行程</button>
-        </div>
+            <input type="submit" class="btn" value="開始預訂行程">
+        </form>
     </div>
     </div>
     <div id="nodatahere"></div>

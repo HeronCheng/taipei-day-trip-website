@@ -8,7 +8,7 @@ Status=Blueprint("Status",__name__)
 
 CORS(Status)
 
-
+#註冊
 @Status.route("/api/user",methods=["POST"])
 def signup():
     cnx=cnxpool.get_connection()
@@ -20,8 +20,9 @@ def signup():
     cursor.execute("SELECT `email` from `tripmember` WHERE `email`='"+signup_email+"';")
     checkregisterData=cursor.fetchall()
 
-    statuscode=requests.get("http://18.180.51.21:3000/api/user").status_code
-
+    prestatuscode=requests.get("http://18.180.51.21:3000/api/user")
+    statuscode=prestatuscode.status_code
+    prestatuscode.close()
     if checkregisterData != []:
         cursor.close()
         cnx.close()
@@ -53,7 +54,7 @@ def signup():
                 "message": "伺服器內部錯誤"
                 }),500
 
-
+#登入
 @Status.route("/api/user",methods=["PATCH"])
 def signin():
     cnx=cnxpool.get_connection()
@@ -64,7 +65,9 @@ def signin():
     checksigninData=cursor.fetchall()
     cursor.close()
     cnx.close()
-    statuscode=requests.get("http://18.180.51.21:3000/api/user").status_code
+    prestatuscode=requests.get("http://18.180.51.21:3000/api/user")
+    statuscode=prestatuscode.status_code
+    prestatuscode.close()
     if signin_email == "" or signin_password == "":
         return jsonify({
             "error": True,
@@ -87,21 +90,26 @@ def signin():
                 "message": "伺服器內部錯誤"
                 }),500
             
-
+#確認使用者狀態
 @Status.route("/api/user",methods=["GET"])
 def status():
     encoded_jwt1=request.cookies.get('memberData')
-    decode_jwt=jwt.decode(encoded_jwt1, "mysecret", algorithms=["HS256"])
-    return jsonify({
-        "data": {
-            "id": decode_jwt["id"],
-            "name": decode_jwt["name"],
-            "email": decode_jwt["email"]
-        }
-        }),200
+    
+    if encoded_jwt1==None:
+        return jsonify({
+        "data":None}),200
+    else:
+        decode_jwt=jwt.decode(encoded_jwt1, "mysecret", algorithms=["HS256"])
+        return jsonify({
+            "data": {
+                "id": decode_jwt["id"],
+                "name": decode_jwt["name"],
+                "email": decode_jwt["email"]
+            }
+            }),200
 
 
-
+#登出
 @Status.route("/api/user",methods=["DELETE"])
 def signout():
     signout_jsonData=jsonify({"ok": True})
