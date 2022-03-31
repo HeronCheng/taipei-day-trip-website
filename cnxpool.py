@@ -1,10 +1,16 @@
 import mysql.connector.pooling
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+password = os.getenv("password")
 
 dbconfig={
     "host" : "localhost",
     "port" : "3306",
     "user" : "root",
-    "password" : "123456",                                            
+    "password" : password ,                                            
     "database" : "website",
     "auth_plugin" : "mysql_native_password"
 }
