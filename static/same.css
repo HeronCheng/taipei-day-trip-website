@@ -41,11 +41,12 @@ a:hover {
 .space {
   flex: auto;
 }
-.righttitle1 {
+#righttitle1 {
   font-size: 16px;
   margin-right: 10px;
   color: #666666;
   line-height: 13px;
+  position: relative;
 }
 .righttitle2 {
   font-size: 16px;
@@ -54,6 +55,33 @@ a:hover {
   line-height: 13px;
 }
 
+
+/*購物車數量icon*/
+.bookcarticon{
+  width: 25px;
+  height: 25px;
+  top: -5px;
+  position: absolute;
+}
+/*loading樣式*/
+#loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 31;
+  background-color: #e8e8e8;
+}
+#loadingicon{
+  z-index: 32;
+  height: 150px;
+}
 /*頁尾*/
 .footer {
   height: 104px;

@@ -1,13 +1,15 @@
 let preSignin=document.getElementById("preSignin");
 let afterSignin=document.getElementById("afterSignin");
-let signin=document.getElementById("signin")
-let signup=document.getElementById("signup")
-let dark=document.getElementById("dark")
+let signin=document.getElementById("signin");
+let signup=document.getElementById("signup");
+let dark=document.getElementById("dark");
+let booksuccess=document.getElementById("booksuccess");
 
 //跳出登入視窗且背景轉暗
 function tosignin_up(){
     signin.style.display="block";
     dark.style.display="block";
+    signin.style.animationDuration="500ms";
 }
 
 
@@ -17,6 +19,7 @@ function toregister() {
     signup.style.display="block";
 }
 function tosignin() {
+    signin.style.animationDuration="0ms";
     signin.style.display="block";
     signup.style.display="none";
 }
@@ -26,6 +29,14 @@ function darkover(){
     signin.style.display="none";
     signup.style.display="none";
     dark.style.display="none";
+    booksuccess.style.display="none";
+    location.reload()
+}
+//attraction頁面的關閉登入視窗
+function darkover2(){
+    dark.style.display="none";
+    booksuccess.style.display="none";
+    location.reload();
 }
 
 //註冊處理
@@ -101,3 +112,16 @@ function tosignin_out(){
 }
 
 
+//訂購成功視窗之後續處理
+
+//繼續預定其他行程
+function booknext(){
+    dark.style.display="none";
+    booksuccess.style.display="none";
+    window.location.href = "/";
+}
+
+//前往結帳付款頁面
+function bookover(){
+    window.location.href = "/booking";
+}

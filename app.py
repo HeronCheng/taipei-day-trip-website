@@ -5,6 +5,7 @@ from attraction import Attraction
 from status import Status
 from booking import Booking
 from flask_cors import CORS
+from order import Order
 
 
 
@@ -21,6 +22,7 @@ app.register_blueprint(Attractions)
 app.register_blueprint(Attraction)
 app.register_blueprint(Status)
 app.register_blueprint(Booking)
+app.register_blueprint(Order)
 
 # Pages
 @app.route("/")

@@ -10,7 +10,7 @@
     <link href="../static/same.css" rel="stylesheet"/>
     <link href="../static/signinup.css" rel="stylesheet"/>
 </head>
-<body onload="getData(0)">
+<body onload="getData(0)"; onselectstart="return false">
     <div id="signin">
         <div class="decorator"></div>
         <div class="sign_title">登入會員帳號</div>
@@ -31,11 +31,12 @@
         <button class="switch" onclick="tosignin()">已經有帳戶了?點此登入</button>
     </div>
     <div id="dark" onclick="darkover()"></div>
+    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
     <div class="title">
         <nav class="titlemain">
             <a href="/" class="lefttitle">台北一日遊</a>
             <div class="space"></div>
-            <a class="righttitle1" onclick="trytobook()">預定行程</a>
+            <a id="righttitle1" onclick="trytobook()">預定行程</a>
             <a class="righttitle2" onclick="tosignin_up()" id="preSignin">登入/註冊</a>
             <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
         </nav>

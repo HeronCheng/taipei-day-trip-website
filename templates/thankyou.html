@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
+    <title>台北一日遊</title>
+    <link href="../static/same.css" rel="stylesheet"/>
+    <link href="../static/thankyou.css" rel="stylesheet"/>
+</head>
+<body onload="checkStatus()" ; onselectstart="return false">
+    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
+    <div class="title">
+        <nav class="titlemain">
+            <a href="/" class="lefttitle">台北一日遊</a>
+            <div class="space"></div>
+            <a id="righttitle1" onclick="trytobook()">預定行程</a>
+            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
+        </nav>
+    </div>
+    <div class="thankyou_text">
+        <div class="text1">行程預定成功</div>
+        <div class="text1">您的訂單編號如下</div>
+        <div id="orderNumber" class="text2"></div>
+        <div class="text3">請記住此編號，或到會員中心查詢歷史訂單</div>
+    </div>
+    <div class="footer" id="footer">
+        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
+    </div>
+    <script>
+        function checkStatus(){
+            //檢查會員登入狀態
+            let req=new XMLHttpRequest();
+            req.open("get","/api/user");
+            req.withCredentials = true;
+            req.send();
+            req.onload=function(){
+                statusData=JSON.parse(req.responseText);
+                if(statusData.data==null){
+                    window.location.href = "/";
+                }
+            }
+            document.querySelector("#loading").style.display="none";
+        }
+        let urlData=location.search;
+        let premsg=urlData.split("=");
+        let msg=premsg[1];
+        document.getElementById("orderNumber").innerHTML=msg
+
+        //點選導覽列的 預定行程 處理
+        function trytobook(){
+            if (statusData.data == null){
+                signin.style.display="block";
+                dark.style.display="block";
+            }
+            else{
+                window.location.href = "/booking";
+            }
+        }
+
+        //登出處理
+        function tosignin_out(){
+            let delete_req=new XMLHttpRequest();
+            delete_req.open("delete","/api/booking");
+            delete_req.withCredentials = true;
+            delete_req.send();
+            delete_req.onload=function(){
+                let signout_req=new XMLHttpRequest();
+                signout_req.open("delete","/api/user");
+                signout_req.withCredentials = true;
+                signout_req.send();
+                signout_req.onload=function(){
+                    let signoutData=JSON.parse(signout_req.responseText);
+                    if(signoutData!=null){
+                        window.location.href = "/";
+                        preSignin.style.display="block";
+                        afterSignin.style.display="none"
+                    }
+            }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -23,10 +23,39 @@ input {
   font-size: 16px;
   line-height: 13px;
 }
+.tpfield {
+  height: 38px;
+  width: 200px;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+}
+.tpfield:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.has-error .tpfield:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.has-success .tpfield:focus {
+  border-color: #2b542c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+.form-group{
+  display: flex;
+}
 /*上方區塊*/
 .first_part {
   width: 1200px;
-  height: 337px;
   color: #666666;
   padding-left: 10%;
   margin-left: auto;
@@ -47,18 +76,21 @@ input {
 }
 .booking_data {
   display: flex;
+  height: 275px;
+  position: relative;
 }
 .picture {
   width: 266px;
   height: 200px;
 }
-#picture {
+.picture2 {
   width: 266px;
   height: 200px;
   margin-top: 35px;
   border-radius: 3px;
 }
 .booking_text {
+  height: 275px;
   margin-left: 22px;
   font-weight: 700;
   font-size: 16px;
@@ -81,11 +113,14 @@ input {
 }
 .delete_icon {
   position: absolute;
-  top: 18.5%;
-  right: 23%;
+  top: 10.5%;
+  right: 14.5%;
 }
 .delete_icon:hover {
   cursor: pointer;
+}
+.b_id{
+  display: none;
 }
 /*中間區塊*/
 .second_part {
@@ -146,19 +181,25 @@ input {
   font-size: 19px;
   line-height: 16px;
 }
-.cardnumber {
-  margin-top: 33px;
-  margin-bottom: 29px;
+.control-label{
+  padding-top: 5px;
 }
-.expired_date {
-  margin-bottom: 29px;
+.cardnumber_title{
+  padding-top: 40px;
 }
-.verify_number {
+.card-number {
+  margin-top: 35px;
+  margin-bottom: 8px;
+}
+.expiration-date {
+  margin-bottom: 8px;
+}
+.cvc {
   margin-bottom: 47px;
 }
 /*確認付款區*/
 .howmuch {
-  margin-left: 67.5%;
+  margin-left: 69%;
   margin-top: 43px;
   font-weight: 700;
   font-size: 16px;
@@ -178,6 +219,9 @@ input {
   background: #448899;
   border-radius: 5px;
   border: none;
+}
+#certain:hover{
+  cursor: pointer;
 }
 /*頁尾*/
 .footer {
@@ -234,17 +278,18 @@ input {
     line-height: 19px;
   }
   .delete_icon {
-    right: 0%;
+    right: 9%;
   }
 }
 
 @media screen and (max-width: 670px) {
   .booking_data {
     display: block;
+    height: 495px;
   }
   .first_part {
     width: 330px;
-    height: 557px;
+    height: 1065px;
   }
   .line {
     width: 330px;
@@ -253,8 +298,8 @@ input {
     margin-left: 0px;
   }
   .delete_icon {
-    top: 68.5%;
-    right: 2%;
+    top: 88.5%;
+    right: 9%;
   }
   .text1 {
     padding-top: 29px;
@@ -267,5 +312,11 @@ input {
   }
   .third_part {
     width: 330px;
+  }
+  .howmuch {
+    margin-left: 50.5%;
+  }
+  #certain {
+    margin-left: 47.5%;
   }
 }

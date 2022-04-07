@@ -17,13 +17,31 @@ function getData(page){
         if(statusData.data != null){
             preSignin.style.display="none";
             afterSignin.style.display="block"
+
+            //檢查購物車內的數量
+            let bookreq=new XMLHttpRequest();
+            bookreq.open("get","/api/booking");
+            bookreq.send();
+            bookreq.onload=function(){
+            prebookData=JSON.parse(bookreq.responseText);
+            let count=prebookData.count;
+            console.log(prebookData)
+            if(count != null){
+                let img=document.createElement("img");
+                img.setAttribute("class","bookcarticon");
+                img.src="../static/pic/icons"+count+".png"
+                let position=document.getElementById("righttitle1");
+                position.appendChild(img);
+                position.style.marginRight="25px";
+            }
+            }
         }
         else{
             preSignin.style.display="block";
             afterSignin.style.display="none"
         }
     }
-
+    
     loading=true;
     fetch("http://18.180.51.21:3000/api/attractions?page="+page+"&keyword=")
     .then(function(response){
@@ -80,6 +98,7 @@ function getData(page){
         let target=document.getElementById("attractions");
         attractions.appendChild(fragment);  
         loading=false;
+        document.querySelector("#loading").style.display="none";
 }
 )
 }

@@ -22,6 +22,23 @@ function getattraction(){
         if(statusData.data != null){
             preSignin.style.display="none";
             afterSignin.style.display="block"
+
+            //檢查購物車內的數量
+            let bookreq=new XMLHttpRequest();
+            bookreq.open("get","/api/booking");
+            bookreq.send();
+            bookreq.onload=function(){
+            prebookData=JSON.parse(bookreq.responseText);
+            let count=prebookData.count;
+            if(count != null){
+                let img=document.createElement("img");
+                img.setAttribute("class","bookcarticon");
+                img.src="../static/pic/icons"+count+".png"
+                let position=document.getElementById("righttitle1");
+                position.appendChild(img);
+                position.style.marginRight="25px";
+            }
+            }
         }
         else{
             preSignin.style.display="block";
@@ -48,6 +65,7 @@ function getattraction(){
             footer.innerHTML="";
             footer.style.backgroundColor="white";
             nodatahere.innerHTML="查無此景點資料";
+            document.querySelector("#loading").style.display="none";
         }
         else{
             datalength=length(result.data.images);
@@ -98,6 +116,7 @@ function getattraction(){
         address1.appendChild(address3);
         document.getElementById("transport1");
         transport1.appendChild(transport3);
+        document.querySelector("#loading").style.display="none";
         }
     })
 }
@@ -373,7 +392,16 @@ function tobook(){
         bookreq.onload=function(){
             let status=JSON.parse(bookreq.responseText);
             if(status.ok==true){
-                window.location.href = "/booking";
+               document.getElementById("booksuccess").style.display="block";
+               document.getElementById("dark").style.display="block";
+            }
+            else if(status.message=="建立失敗"){
+               document.getElementById("booksuccess").style.display="block";
+               document.getElementById("dark").style.display="block";
+               document.getElementById("bs_1").innerHTML="預定失敗";
+               document.getElementById("bs_2").innerHTML="已達預定數量上限";
+               document.getElementById("bs_2").setAttribute("class","switch2")
+               document.getElementById("bs_3").innerHTML="查看您的預定頁面";
             }
         }
     }
