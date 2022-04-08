@@ -35,8 +35,12 @@ function darkover(){
 //attraction頁面的關閉登入視窗
 function darkover2(){
     dark.style.display="none";
-    booksuccess.style.display="none";
-    location.reload();
+    signin.style.display="none";
+    signup.style.display="none";
+    if (booksuccess.style.display=="block"){
+        booksuccess.style.display="none";
+        location.reload();
+    }
 }
 
 //註冊處理

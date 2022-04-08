@@ -152,17 +152,17 @@ function gopay(){
 
     // 確認是否可以 getPrime
     if (tappayStatus.canGetPrime === false) {
-        alert('can not get prime')
+        console.log('can not get prime')
         return
     }
 
     // Get prime
     TPDirect.card.getPrime((result) => {
         if (result.status !== 0) {
-            alert('get prime error ' + result.msg)
+            console.log('get prime error ' + result.msg)
             return
         }
-        alert('get prime 成功，prime: ' + result.card.prime)
+        console.log('get prime 成功，prime: ' + result.card.prime)
 
         
         //檢查購物車內的數量

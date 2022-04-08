@@ -109,6 +109,15 @@
   line-height: 24px;
   color: #666666;
   margin: 15px;
+  position: relative;
+}
+.cross{
+  position: absolute;
+  width: 25px;
+  right: 2px;
+}
+.cross:hover{
+  cursor: pointer;
 }
 .username {
   width: 310px;
