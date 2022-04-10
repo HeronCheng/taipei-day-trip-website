@@ -1,13 +1,13 @@
 let next_page;
 let data=null;
 let loading=false;
-let preSignin=document.getElementById("preSignin");
-let afterSignin=document.getElementById("afterSignin");
 let statusData;
 
 //載入首頁的資料
 function getData(page){
     //檢查會員登入狀態
+    let preSignin=document.getElementById("preSignin");
+    let afterSignin=document.getElementById("afterSignin");
     let req=new XMLHttpRequest();
     req.open("get","/api/user");
     req.withCredentials = true;
@@ -17,13 +17,31 @@ function getData(page){
         if(statusData.data != null){
             preSignin.style.display="none";
             afterSignin.style.display="block"
+
+            //檢查購物車內的數量
+            let bookreq=new XMLHttpRequest();
+            bookreq.open("get","/api/booking");
+            bookreq.send();
+            bookreq.onload=function(){
+            prebookData=JSON.parse(bookreq.responseText);
+            let count=prebookData.count;
+            console.log(prebookData)
+            if(count != null){
+                let img=document.createElement("img");
+                img.setAttribute("class","bookcarticon");
+                img.src="../static/pic/icons"+count+".png"
+                let position=document.getElementById("righttitle1");
+                position.appendChild(img);
+                position.style.marginRight="25px";
+            }
+            }
         }
         else{
             preSignin.style.display="block";
             afterSignin.style.display="none"
         }
     }
-
+    
     loading=true;
     fetch("http://18.180.51.21:3000/api/attractions?page="+page+"&keyword=")
     .then(function(response){
@@ -80,6 +98,7 @@ function getData(page){
         let target=document.getElementById("attractions");
         attractions.appendChild(fragment);  
         loading=false;
+        document.querySelector("#loading").style.display="none";
 }
 )
 }
@@ -174,106 +193,6 @@ function lazyLoad2() {
         else{query(queryNextpage);console.log(queryNextpage)};
         }  
     }
-
-
-let signin=document.getElementById("signin")
-let signup=document.getElementById("signup")
-let dark=document.getElementById("dark")
-//跳出登入視窗且背景轉暗
-function tosignin_up(){
-    signin.style.display="block";
-    dark.style.display="block";
-}
-
-
-//切換註冊與登入介面
-function toregister() {
-    signin.style.display="none";
-    signup.style.display="block";
-}
-function tosignin() {
-    signin.style.display="block";
-    signup.style.display="none";
-}
-
-//關閉登入視窗
-function darkover(){
-    signin.style.display="none";
-    signup.style.display="none";
-    dark.style.display="none";
-}
-
-//註冊處理
-function goSignup(){
-    let signup_username=document.getElementById("signup_username").value;
-    let signup_email=document.getElementById("signup_email").value;
-    let signup_password=document.getElementById("signup_password").value;
-    let signup_message=document.getElementById("up_message");
-    let boardSize=document.getElementById("signup");
-    let request=new XMLHttpRequest();
-    request.open("post","/api/user");
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("signup_username="+signup_username+"&signup_email="+ signup_email+"&signup_password="+signup_password);
-    request.onload=function(){
-        let data=JSON.parse(request.responseText);
-        if(data.ok==true){
-            signup_message.style.display="block";
-            boardSize.style.height="357px";
-            signup_message.innerHTML="註冊成功";
-        }
-        else{
-            signup_message.style.display="block";
-            boardSize.style.height="357px";
-            signup_message.innerHTML=data.message;
-        }
-    }
-};
-
-
-//登入處理
-function goSignin(){
-    let signin_email=document.getElementById("signin_email").value;
-    let signin_password=document.getElementById("signin_password").value;
-    let signin_message=document.getElementById("in_message");
-    let boardSize=document.getElementById("signin");
-    let request=new XMLHttpRequest();
-    request.open("patch","/api/user");
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send("signin_email="+ signin_email+"&signin_password="+signin_password);
-    request.onload=function(){
-        let data=JSON.parse(request.responseText);
-        if(data.ok==true){
-            location.reload()
-        }
-        else{
-            signin_message.style.display="block";
-            boardSize.style.height="298px";
-            signin_message.innerHTML=data.message;
-        }
-    }
-}
-
-//登出處理
-function tosignin_out(){
-    let delete_req=new XMLHttpRequest();
-    delete_req.open("delete","/api/booking");
-    delete_req.withCredentials = true;
-    delete_req.send();
-    delete_req.onload=function(){
-        let signout_req=new XMLHttpRequest();
-        signout_req.open("delete","/api/user");
-        signout_req.withCredentials = true;
-        signout_req.send();
-        signout_req.onload=function(){
-            let signoutData=JSON.parse(signout_req.responseText);
-            if(signoutData!=null){
-                window.location.href = "/";
-                preSignin.style.display="block";
-                afterSignin.style.display="none"
-            }
-    }
-    }
-}
 
 
 //點選導覽列的 預定行程 處理

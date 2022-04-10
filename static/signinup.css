@@ -1,0 +1,231 @@
+#dark {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 31;
+  filter: contrast(0) brightness(0.5);
+  background-color: white;
+}
+#preSignin {
+  display: block;
+}
+#afterSignin {
+  display: none;
+}
+#signin {
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0px 4px 60px #aaaaaa;
+  position: fixed;
+  left: 39%;
+  z-index: 35;
+  width: 340px;
+  height: 275px;
+  top:0%;
+  display: none;
+  animation-name: movedown;
+  animation-duration: 500ms;
+  animation-delay: 0ms;
+  animation-fill-mode: both;
+  animation-play-state:running;
+  animation-timing-function: ease-out;
+}
+@keyframes movedown {
+  0% {
+    top: 0%;
+  }
+  25% {
+    top: 3%;
+  }
+  50% {
+    top: 6%;
+  }
+  100% {
+    top: 9%;
+  }
+}
+#signup {
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0px 4px 60px #aaaaaa;
+  position: fixed;
+  left: 39%;
+  z-index: 35;
+  width: 340px;
+  height: 332px;
+  bottom: 51%;
+  display: none;
+}
+#booksuccess {
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0px 4px 60px #aaaaaa;
+  position: fixed;
+  left: 39%;
+  z-index: 35;
+  width: 340px;
+  height: 250px;
+  top:0%;
+  display: none;
+  animation-name: movedown2;
+  animation-duration: 500ms;
+  animation-delay: 0ms;
+  animation-fill-mode: both;
+  animation-play-state:running;
+  animation-timing-function: ease-out;
+}
+@keyframes movedown2 {
+  0% {
+    top: 0%;
+  }
+  25% {
+    top: 3%;
+  }
+  50% {
+    top: 6%;
+  }
+  100% {
+    top: 9%;
+  }
+}
+.decorator {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+  border-radius: 6px 6px 0px 0px;
+}
+.sign_title {
+  text-align: center;
+  width: 310px;
+  height: 27px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  margin: 15px;
+  position: relative;
+}
+.cross{
+  position: absolute;
+  width: 25px;
+  right: 2px;
+}
+.cross:hover{
+  cursor: pointer;
+}
+.username {
+  width: 310px;
+  height: 47px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.email {
+  width: 310px;
+  height: 47px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.password {
+  width: 310px;
+  height: 47px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.submit {
+  width: 310px;
+  height: 47px;
+  background: #448899;
+  border-radius: 5px;
+  border: none;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.submit:hover {
+  cursor: pointer;
+}
+.switch {
+  text-align: center;
+  width: 310px;
+  height: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  border: none;
+  background-color: white;
+  margin-left: 15px;
+}
+.switch:hover {
+  cursor: pointer;
+}
+.switch1 {
+  text-align: center;
+  width: 310px;
+  height: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  border: none;
+  background-color: white;
+  margin-left: 15px;
+  margin-top: 35px;
+}
+.switch1:hover {
+  cursor: pointer;
+}
+/*沒有偽元素的版本*/
+.switch2 {
+  text-align: center;
+  width: 310px;
+  height: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  border: none;
+  background-color: white;
+  margin-left: 15px;
+  margin-top: 35px;
+}
+
+#up_message {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 9px;
+  display: none;
+}
+#in_message {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 13px;
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 9px;
+  display: none;
+}
