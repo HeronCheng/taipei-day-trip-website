@@ -3,12 +3,12 @@ from flask_cors import CORS
 from cnxpool import cnxpool
 import jwt
 
-Status=Blueprint("Status",__name__)
+status=Blueprint("status",__name__)
 
-CORS(Status)
+CORS(status)
 
 #註冊
-@Status.route("/api/user",methods=["POST"])
+@status.route("/api/user",methods=["POST"])
 def signup():
     cnx=cnxpool.get_connection()
     cursor=cnx.cursor()
@@ -31,22 +31,22 @@ def signup():
                 }),400
         elif checkregisterData == []:
             cursor.execute("INSERT INTO `tripmember` (`name`,`email`,`password`) VALUES ('"+signup_username+"','"+signup_email+"','"+signup_password+"');")
-            cursor.close()
-            cnx.commit()
             return jsonify({
                 "ok": True
                 }),200
     except :
+        cnx.rollback();
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"
             }),500
     finally:
         cursor.close()
+        cnx.commit()
         cnx.close()
 
 #登入
-@Status.route("/api/user",methods=["PATCH"])
+@status.route("/api/user",methods=["PATCH"])
 def signin():
     cnx=cnxpool.get_connection()
     cursor=cnx.cursor()
@@ -77,10 +77,11 @@ def signin():
             "error": True,
             "message": "伺服器內部錯誤"
             }),500
+
             
 #確認使用者狀態
-@Status.route("/api/user",methods=["GET"])
-def status():
+@status.route("/api/user",methods=["GET"])
+def getstatus():
     encoded_jwt1=request.cookies.get('memberData')
     
     if encoded_jwt1==None:
@@ -98,7 +99,7 @@ def status():
 
 
 #登出
-@Status.route("/api/user",methods=["DELETE"])
+@status.route("/api/user",methods=["DELETE"])
 def signout():
     signout_jsonData=jsonify({"ok": True})
     signout_jsonData.set_cookie(key='memberData', value='', expires=0)

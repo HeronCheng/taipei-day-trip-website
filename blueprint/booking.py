@@ -1,14 +1,14 @@
 from flask import Blueprint,jsonify,request
 from flask_cors import CORS
 from cnxpool import cnxpool
-import json,jwt
+import jwt
 
-Booking=Blueprint("Booking",__name__)
+booking=Blueprint("booking",__name__)
 
-CORS(Booking)
+CORS(booking)
 
 #取得尚未確認下單的預定行程
-@Booking.route("/api/booking",methods=["GET"])
+@booking.route("/api/booking",methods=["GET"])
 def check():
     
     encoded_jwt1=request.cookies.get('memberData')
@@ -58,7 +58,7 @@ def check():
         cnx.close()
 
 #建立新的預定行程
-@Booking.route("/api/booking",methods=["POST"])
+@booking.route("/api/booking",methods=["POST"])
 def build():
     cnx=cnxpool.get_connection()
     cursor = cnx.cursor()
@@ -98,6 +98,7 @@ def build():
             
             return jsonify({"ok": True}),200
     except:
+        cnx.rollback()
         return jsonify({
             "error": True,
             "message": "伺服器內部錯誤"
@@ -109,24 +110,28 @@ def build():
 
 
 #刪除目前的預定行程
-@Booking.route("/api/booking",methods=["DELETE"])
+@booking.route("/api/booking",methods=["DELETE"])
 def delete():
     encoded_jwt1=request.cookies.get('memberData')
     decode_jwt=jwt.decode(encoded_jwt1, "mysecret", algorithms=["HS256"])
     user_id=decode_jwt["id"]
-    if encoded_jwt1 == None:
-        return jsonify({
-            "error": True,
-            "message": "尚未登入"
-            }),403
-    else:
-        cnx=cnxpool.get_connection()
-        cursor=cnx.cursor()
-        booking_number= request.form.get('booking_number')
-        cursor.execute("DELETE FROM `bookingdata` WHERE `booking_number`='"+booking_number+"';")
-        cursor.execute("SELECT count(*) FROM `bookingdata` WHERE `user_id`="+str(user_id)+";")
-        result=cursor.fetchone()
+    try:
+        if encoded_jwt1 == None:
+            return jsonify({
+                "error": True,
+                "message": "尚未登入"
+                }),403
+        else:
+            cnx=cnxpool.get_connection()
+            cursor=cnx.cursor()
+            booking_number= request.form.get('booking_number')
+            cursor.execute("DELETE FROM `bookingdata` WHERE `booking_number`='"+booking_number+"';")
+            cursor.execute("SELECT count(*) FROM `bookingdata` WHERE `user_id`="+str(user_id)+";")
+            result=cursor.fetchone()
+            return jsonify({"ok": True,"booknumber":result[0]}),200
+    except:
+        cnx.rollback()
+    finally:
         cursor.close()
         cnx.commit()
         cnx.close()
-        return jsonify({"ok": True,"booknumber":result[0]}),200

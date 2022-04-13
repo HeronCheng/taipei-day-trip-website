@@ -150,9 +150,6 @@ input {
     height: 300px;
     background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
   }
-  #signin {
-    top: 10%;
-  }
   .picture {
     position: absolute;
     left: 54%;
@@ -246,12 +243,6 @@ input {
     height: 280px;
     background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
   }
-  #signin {
-    left: 22%;
-  }
-  #signup {
-    left: 21%;
-  }
   .picture {
     position: absolute;
     left: 40%;
@@ -271,13 +262,5 @@ input {
   }
   .outside {
     width: 320px;
-  }
-}
-@media screen and (max-width: 460px) {
-  #signin {
-    left: 1%;
-  }
-  #signup {
-    left: 1%;
   }
 }

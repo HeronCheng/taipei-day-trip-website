@@ -119,7 +119,7 @@
 .cross:hover{
   cursor: pointer;
 }
-.username {
+.sign {
   width: 310px;
   height: 47px;
   border: 1px solid #cccccc;
@@ -129,35 +129,23 @@
   margin-right: 15px;
   margin-bottom: 10px;
 }
-.email {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+.ok{
+  width: 30px;
+  position: absolute;
+  right: 22px;
+  top: 8px;
+  display: none;
 }
-.password {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+.notok{
+  width: 30px;
+  position: absolute;
+  right: 22px;
+  top: 8px;
+  display: none;
 }
 .submit {
-  width: 310px;
-  height: 47px;
   background: #448899;
-  border-radius: 5px;
   border: none;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
   color: #ffffff;
 }
 .submit:hover {
@@ -228,4 +216,26 @@
   margin-top: 5px;
   margin-bottom: 9px;
   display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  #signin {
+    top: 10%;
+  }
+}
+@media screen and (max-width: 600px) {
+  #signin {
+    left: 22%;
+  }
+  #signup {
+    left: 21%;
+  }
+}
+@media screen and (max-width: 460px) {
+  #signin {
+    left: 1%;
+  }
+  #signup {
+    left: 1%;
+  }
 }

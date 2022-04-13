@@ -1,11 +1,10 @@
-from pickle import TRUE
 from flask import *
-from attractions import Attractions
-from attraction import Attraction
-from status import Status
-from booking import Booking
 from flask_cors import CORS
-from order import Order
+from blueprint.attractions import attractions
+from blueprint.attraction import attraction
+from blueprint.status import status
+from blueprint.booking import booking
+from blueprint.order import order
 
 
 
@@ -18,11 +17,11 @@ app.config["TEMPLATES_AUTO_RELOAD"]=True
 CORS(app)
 
 
-app.register_blueprint(Attractions)
-app.register_blueprint(Attraction)
-app.register_blueprint(Status)
-app.register_blueprint(Booking)
-app.register_blueprint(Order)
+app.register_blueprint(attractions)
+app.register_blueprint(attraction)
+app.register_blueprint(status)
+app.register_blueprint(booking)
+app.register_blueprint(order)
 
 # Pages
 @app.route("/")

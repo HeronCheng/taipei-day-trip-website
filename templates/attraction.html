@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
     <title>台北一日遊</title>
-    <link href="../static/attraction.css" rel="stylesheet"/>
-    <link href="../static/same.css" rel="stylesheet"/>
-    <link href="../static/signinup.css" rel="stylesheet"/>
+    <link href="../static/css/attraction.css" rel="stylesheet"/>
+    <link href="../static/css/same.css" rel="stylesheet"/>
+    <link href="../static/css/signinup.css" rel="stylesheet"/>
 </head>
 <body onload="getattraction()" ; onselectstart="return false">
     <div class="title">
@@ -23,20 +23,44 @@
     <div id="signin">
         <div class="decorator"></div>
         <div class="sign_title">登入會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover2()"></div>
-        <input type="text" placeholder="輸入電子信箱" class="email" id="signin_email">
-        <input type="password" placeholder="輸入密碼" class="password" id="signin_password">
-        <input type="submit" value="登入帳戶" class="submit" onclick="goSignin()">
+        <form onsubmit="goSignin()">
+        <div style="position:relative">
+            <input type="email" placeholder="輸入電子信箱" class="sign sign1" id="signin_email" onkeyup="verify(this)" required>
+            <img src="../static/pic/check.png" class="ok" id="signin_email_ok">
+            <img src="../static/pic/close.png" class="notok" id="signin_email_notok">    
+        </div>
+        <div style="position:relative">
+            <input type="password" placeholder="輸入密碼" class="sign sign1" id="signin_password" onkeyup="verify(this)" required>
+            <img src="../static/pic/check.png" class="ok" id="signin_password_ok">
+            <img src="../static/pic/close.png" class="notok" id="signin_password_notok">    
+        </div>
+        <button type="submit" class="sign submit">登入帳戶</button>
         <div id="in_message"></div>
+        </form>
         <button class="switch" onclick="toregister()">還沒有帳戶?點此註冊</button>
     </div>
     <div id="signup">
         <div class="decorator"></div>
         <div class="sign_title">註冊會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover2()"></div>
-        <input type="text"  placeholder="輸入姓名" class="username" id="signup_username">
-        <input type="text"  placeholder="輸入電子信箱" class="email" id="signup_email">
-        <input type="password"  placeholder="輸入密碼" class="password" id="signup_password">
-        <input type="submit"  value="註冊新帳戶" class="submit" onclick="goSignup()">
+        <form onsubmit="goSignup()">
+        <div style="position:relative">
+            <input type="text"  placeholder="輸入姓名" class="sign sign1" id="signup_username" onkeyup="verify(this)" required >
+            <img src="../static/pic/check.png" class="ok" id="signup_username_ok">
+            <img src="../static/pic/close.png" class="notok" id="signup_username_notok">
+        </div>
+        <div style="position:relative">
+            <input type="email"  placeholder="輸入電子信箱" class="sign sign1" id="signup_email" onkeyup="verify(this)" required >
+            <img src="../static/pic/check.png" class="ok" id="signup_email_ok">
+            <img src="../static/pic/close.png" class="notok" id="signup_email_notok">
+        </div>
+        <div style="position:relative">
+            <input type="password"  placeholder="輸入密碼" class="sign sign1" id="signup_password" onkeyup="verify(this)" required >
+            <img src="../static/pic/check.png" class="ok" id="signup_password_ok">
+            <img src="../static/pic/close.png" class="notok" id="signup_password_notok">
+        </div>
+        <button type="submit" class="sign submit">註冊新帳戶</button>
         <div id="up_message"></div>
+        </form>
         <button class="switch" onclick="tosignin()">已經有帳戶了?點此登入</button>
     </div>
     <div id="booksuccess">
@@ -85,7 +109,7 @@
     <div class="footer" id="footer">
         <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
     </div>
-    <script type="text/javascript" src="../static/attraction.js"></script>
-    <script type="text/javascript" src="../static/LoginoutRegister.js"></script>
+    <script type="text/javascript" src="../static/js/attraction.js"></script>
+    <script type="text/javascript" src="../static/js/LoginoutRegister.js"></script>
 </body>
 </html>

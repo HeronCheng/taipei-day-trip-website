@@ -3,6 +3,13 @@ let number;
 let datalength;
 let statusData;
 
+//設定不行輸入過去日期
+let date_now=new Date();
+let year=date_now.getFullYear();
+let month=date_now.getMonth()+1 < 10 ? "0"+(date_now.getMonth()+1) : (date_now.getMonth()+1)
+let date=date_now.getDate() < 10 ? "0"+ (date_now.getDate()) : (date_now.getDate())
+document.getElementById("date").setAttribute("min",year+"-"+month+"-"+date);
+
 //計算json物件中的元素數量
 function length(obj) {
     return Object.keys(obj).length;
@@ -73,6 +80,7 @@ function getattraction(){
             let picurl=result.data.images[number];
             let picurl2=document.createElement("img");
             picurl2.setAttribute("class","pic2")
+            picurl2.setAttribute("id","id_"+number)
             picurl2.setAttribute("id","id_"+number)
             picurl2.src=picurl;
             document.getElementById("pic");
@@ -358,7 +366,6 @@ function trytobook(){
 
 
 //建立新的預定行程
-
 function tobook(){
     event.preventDefault()
     if (statusData.data == null){

@@ -190,10 +190,10 @@ function deletebooking(number){
     delete_req.onload=function(){
         let deleteData=JSON.parse(delete_req.responseText);
         if(deleteData.booknumber==0){
-            window.location.href = "/booking";
+            document.querySelector("#loading").style.display="flex";
+            location.reload()
             user_name=document.getElementById("username");
             user_name.innerHTML=username;
-            // first.innerHTML="";
             first_part.style.height="220px";
             line1.style.display="none";
             line2.style.display="none";
@@ -207,6 +207,7 @@ function deletebooking(number){
             nodatahere.style.display="block";
             nodatahere.innerHTML="目前沒有任何待預訂的行程";
             footer.style.height="865px";
+            
         }
         else{
             let deletepart=document.getElementById("first"+number);

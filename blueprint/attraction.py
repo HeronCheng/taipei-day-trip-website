@@ -3,11 +3,12 @@ from flask_cors import CORS
 from cnxpool import cnxpool
 import re
 
-Attraction=Blueprint("Attraction",__name__)
-CORS(Attraction)
+attraction=Blueprint("attraction",__name__)
+CORS(attraction)
 
-@Attraction.route("/api/attraction/<attractionId>",methods=["GET"])
-def attraction(attractionId):
+#根據景點編號取得景點資料
+@attraction.route("/api/attraction/<attractionId>",methods=["GET"])
+def getattraction(attractionId):
     current_app.config['JSON_SORT_KEYS'] = False
     if re.findall('[\d]',attractionId)!=[]:
         if int(attractionId)>58:
