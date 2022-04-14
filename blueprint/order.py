@@ -24,7 +24,7 @@ def makeordernumber(user_id):
 
 #建立新訂單，並完成付款程序
 @order.route("/api/orders",methods=["POST"])
-def getorders():
+def buildorders():
     #檢查是否登入
     encoded_jwt=request.cookies.get('memberData')
     decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
@@ -41,10 +41,6 @@ def getorders():
             "message": "未輸入手機號碼"
             }),400
     else:
-
-        
-
-        
         #抓出使用者id
         user_id=decode_jwt["id"]
 
@@ -141,6 +137,42 @@ def getorders():
             cnx.commit()
             cnx.close()
     
+#查詢使用者所有訂單
+@order.route("/api/orders",methods=["GET"])
+def getorders():
+    try:
+        #檢查登入與否
+        encoded_jwt=request.cookies.get('memberData')
+        decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
+        if encoded_jwt == None:
+            return jsonify({
+                "error": True,
+                "message": "尚未登入"
+                }),403
+        else:
+            user_id=decode_jwt["id"]
+            cnx=cnxpool.get_connection()
+            cursor=cnx.cursor()
+            cursor.execute("SELECT * FROM `triporder` WHERE `user_id`='"+str(user_id)+"' ORDER BY `order_number` DESC;")
+            result=cursor.fetchall()
+            cursor.close()
+            cnx.close()
+            list=[]
+            for i in range(len(result)):
+                prelist={
+                    "number": result[i][0],
+                    "total_price": result[i][3],
+                    "trip": literal_eval(result[i][2]),
+                    "status": result[i][7]
+                }
+                list.append(prelist)
+            return jsonify({"data":list}),200
+    except:
+        return jsonify({
+            "error": True,
+            "message": "伺服器內部錯誤"
+            }),500
+
 
 #根據訂單編號取得訂單資訊
 @order.route("/api/order/<orderNumber>",methods=["GET"])
@@ -163,15 +195,14 @@ def showorder(orderNumber):
             return jsonify({
                 "data": {
                     "number": orderNumber,
-                    "total_price": result[0][3],
-                    "trip": literal_eval(result[0][2]),
+                    "total_price": result[3],
+                    "trip": literal_eval(result[2]),
                     "contact": {
-                    "user_id":result[0][1],
-                    "name": result[0][4],
-                    "email": result[0][5],
-                    "phone": result[0][6]
+                    "user_id":result[1],
+                    "name": result[4],
+                    "email": result[5],
+                    "phone": result[6]
                     },
-                    "status": result[0][7]
                 }
                 }),200
     except:

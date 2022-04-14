@@ -1,0 +1,30 @@
+.secondpart {
+    width: 1200px;
+    height: 200px;
+    padding-left: 10%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+#the_order{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/*RWD區塊*/
+@media screen and (max-width: 1200px) {
+    .secondpart {
+      width: 900px;
+    }
+  }
+  
+  @media screen and (max-width: 960px) {
+    .secondpart {
+      width: 630px;
+    }
+  }
+  
+  @media screen and (max-width: 670px) {
+    .secondpart {
+      width: 330px;
+    }
+  }
+  

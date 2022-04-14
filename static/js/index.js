@@ -108,7 +108,6 @@ function getData(page){
     document.addEventListener("scroll", lazyLoad)
     function lazyLoad() {
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) { 
-            console.log(data)
             if (next_page==null){document.removeEventListener("scroll", lazyLoad)}
             else{getData(next_page)};
             }  
@@ -153,14 +152,16 @@ function query(anotherpage){
             id=result.data[i].id;
 
             let bigdiv=document.createElement("div");
-
+            let hyperlink=document.createElement("a");
+            hyperlink.setAttribute("href","/attraction/"+id)
             let img=document.createElement("img");
             img.setAttribute("class","img2");
             img.setAttribute("id",id)
             img.src=url;
             fragment.appendChild(bigdiv);
             bigdiv.setAttribute("class","bigdiv");
-            bigdiv.appendChild(img);
+            hyperlink.appendChild(img);
+            bigdiv.appendChild(hyperlink);
 
             let pcTitle=document.createElement("div");
             let textnode=document.createTextNode(title);

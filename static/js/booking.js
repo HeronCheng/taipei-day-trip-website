@@ -13,6 +13,8 @@ let forth=document.getElementById("forth");
 let nodatahere=document.getElementById("nodatahere");
 let footer=document.getElementById("footer");
 
+//抓頁面資料
+checkStatus()
 
 function checkStatus(){
     //檢查會員登入狀態
@@ -26,6 +28,8 @@ function checkStatus(){
             window.location.href = "/";
         }
         else{
+            preSignin.style.display="none";
+            afterSignin.style.display="block"
             //檢查購物車內的數量
             let req=new XMLHttpRequest();
             req.open("get","/api/booking");
@@ -216,24 +220,9 @@ function deletebooking(number){
     }
 }
 
-//登出處理
-function tosignin_out(){
-    let delete_req=new XMLHttpRequest();
-    delete_req.open("delete","/api/booking");
-    delete_req.withCredentials = true;
-    delete_req.send();
-    delete_req.onload=function(){
-        let signout_req=new XMLHttpRequest();
-        signout_req.open("delete","/api/user");
-        signout_req.withCredentials = true;
-        signout_req.send();
-        signout_req.onload=function(){
-            let signoutData=JSON.parse(signout_req.responseText);
-            if(signoutData!=null){
-                window.location.href = "/";
-            }
-    }
-    }
+//進入會員頁面
+function tomember(){
+    window.location.href = "/member";
 }
 
 //點選導覽列的 預定行程 處理

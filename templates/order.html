@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link href="../static/css/booking.css" rel="stylesheet"/>
+<link href="../static/css/signinup.css" rel="stylesheet"/>
+<link href="../static/css/order.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div class="first_part" id="first_part">
+    <div class="subtitle">您好，<span id="username"></span>，以下是編號 <span id="the_order"></span> 的訂單內容:</div>
+    <div id="bookingdata"></div>
+</div>
+<div class="line" id="line1"></div>
+<div class="secondpart" id="second">
+    <div class="contact">
+    <div class="contactdata">訂購者的聯絡資訊</div>
+    <div class="contactname">聯絡姓名：<span id="contactname"></span></div>
+    <div class="contactemail">連絡信箱：<span id="contactemail"></span></div>
+    <div class="contactnumber">手機號碼：<span id="contactnumber"></span></div>
+    </div>
+</div>
+<div id="forth">
+<div class="howmuch">訂單金額：新台幣 <span id="total_fee"></span> 元</div>
+<button type="submit" id="certain" onclick="tomember()">回到會員專區</button>
+</div>
+{% endblock %}
+        
+{% block js %}
+<script type="text/javascript" src="../static/js/order.js"></script>
+{% endblock %}

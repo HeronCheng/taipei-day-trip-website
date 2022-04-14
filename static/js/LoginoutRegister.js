@@ -5,6 +5,7 @@ let signup=document.getElementById("signup");
 let dark=document.getElementById("dark");
 let booksuccess=document.getElementById("booksuccess");
 
+
 //跳出登入視窗且背景轉暗
 function tosignin_up(){
     signin.style.display="block";
@@ -67,6 +68,8 @@ function darkover(){
     signup.style.display="none";
     dark.style.display="none";
     booksuccess.style.display="none";
+    revise_window.style.display="none";
+
     location.reload()
 }
 
@@ -202,28 +205,11 @@ function goSignin(){
 }
 
 
-
-//登出處理
-function tosignin_out(){
-    let delete_req=new XMLHttpRequest();
-    delete_req.open("delete","/api/booking");
-    delete_req.withCredentials = true;
-    delete_req.send();
-    delete_req.onload=function(){
-        let signout_req=new XMLHttpRequest();
-        signout_req.open("delete","/api/user");
-        signout_req.withCredentials = true;
-        signout_req.send();
-        signout_req.onload=function(){
-            let signoutData=JSON.parse(signout_req.responseText);
-            if(signoutData!=null){
-                window.location.href = "/";
-                preSignin.style.display="block";
-                afterSignin.style.display="none"
-            }
-    }
-    }
+//進入會員頁面
+function tomember(){
+    window.location.href = "/member";
 }
+
 
 
 //訂購成功視窗之後續處理

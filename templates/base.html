@@ -10,22 +10,22 @@
     {% block head %}{% endblock %}
 </head>
 <body onselectstart="return false">
-    <div id="signin">
+    <div id="signin" class="template">
         <div class="decorator"></div>
         <div class="sign_title">登入會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
         <form onsubmit="goSignin()">
         <div style="position:relative">
-            <input type="email" placeholder="輸入電子信箱" class="sign" id="signin_email" onkeyup="verify(this)" required>
+            <input type="email" placeholder="輸入電子信箱" class="sign sign1" id="signin_email" onkeyup="verify(this)" required>
             <img src="../static/pic/check.png" class="ok" id="signin_email_ok">
             <img src="../static/pic/close.png" class="notok" id="signin_email_notok">
         </div>
         <div style="position:relative">
-            <input type="password" placeholder="輸入密碼" class="sign" id="signin_password" onkeyup="verify(this)" required>
+            <input type="password" placeholder="輸入密碼" class="sign sign1" id="signin_password" onkeyup="verify(this)" required>
             <img src="../static/pic/check.png" class="ok" id="signin_password_ok">
             <img src="../static/pic/close.png" class="notok" id="signin_password_notok">
         </div>
         <button type="submit" class="sign submit" >登入帳戶</button>
-        <div id="in_message"></div>
+        <div id="in_message" class="message"></div>
         </form>
         <button class="switch" onclick="toregister()">還沒有帳戶?點此註冊</button>
     </div>
@@ -34,17 +34,17 @@
         <div class="sign_title">註冊會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
         <form onsubmit="goSignup()">
         <div style="position:relative">
-            <input type="text"  placeholder="輸入姓名" class="sign in" id="signup_username" onkeyup="verify(this)" required >
+            <input type="text"  placeholder="輸入姓名" class="sign in sign1" id="signup_username" onkeyup="verify(this)" required >
             <img src="../static/pic/check.png" class="ok" id="signup_username_ok">
             <img src="../static/pic/close.png" class="notok" id="signup_username_notok">
         </div>
         <div style="position:relative">
-            <input type="email"  placeholder="輸入電子信箱" class="sign in" id="signup_email" onkeyup="verify(this)" required >
+            <input type="email"  placeholder="輸入電子信箱" class="sign in sign1" id="signup_email" onkeyup="verify(this)" required >
             <img src="../static/pic/check.png" class="ok" id="signup_email_ok">
             <img src="../static/pic/close.png" class="notok" id="signup_email_notok">
         </div>
         <div style="position:relative">
-            <input type="password"  placeholder="輸入密碼" class="sign in" id="signup_password" onkeyup="verify(this)" required >
+            <input type="password"  placeholder="輸入密碼" class="sign in sign1" id="signup_password" onkeyup="verify(this)" required >
             <img src="../static/pic/check.png" class="ok" id="signup_password_ok">
             <img src="../static/pic/close.png" class="notok" id="signup_password_notok">
         </div>
@@ -61,11 +61,11 @@
             <div class="space"></div>
             <a id="righttitle1" onclick="trytobook()">預定行程</a>
             <a class="righttitle2" onclick="tosignin_up()" id="preSignin">登入/註冊</a>
-            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
+            <a class="righttitle2" onclick="tomember()" id="afterSignin">會員專區</a>
         </nav>
     </div>
     {% block content %}{% endblock %}
-    <div class="footer">
+    <div class="footer" id="footer">
         <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
     </div>
     {% block js %}{% endblock %}

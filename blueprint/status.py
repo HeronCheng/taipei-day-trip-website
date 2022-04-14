@@ -68,7 +68,7 @@ def signin():
                 "message": "帳號或密碼錯誤"
                 }),400
         elif checksigninData != []:
-            encoded_jwt = jwt.encode({"id":checksigninData[0][0],"name":checksigninData[0][1],"email": checksigninData[0][2]}, "mysecret", algorithm="HS256")
+            encoded_jwt = jwt.encode({"id":checksigninData[0][0],"name":checksigninData[0][1],"email": checksigninData[0][2],"password":signin_password}, "mysecret", algorithm="HS256")
             jsonData=jsonify({"ok": True})
             jsonData.set_cookie(key='memberData', value=encoded_jwt, expires=None)
             return jsonData,200
@@ -82,18 +82,24 @@ def signin():
 #確認使用者狀態
 @status.route("/api/user",methods=["GET"])
 def getstatus():
-    encoded_jwt1=request.cookies.get('memberData')
-    
-    if encoded_jwt1==None:
+    encoded_jwt=request.cookies.get('memberData')
+    decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
+    cnx=cnxpool.get_connection()
+    cursor=cnx.cursor()
+    cursor.execute("SELECT `password` from `tripmember` WHERE `id`='"+str(decode_jwt["id"])+"';")
+    userdata=cursor.fetchone()
+    cursor.close()
+    cnx.close()
+    if encoded_jwt==None:
         return jsonify({
         "data":None}),200
     else:
-        decode_jwt=jwt.decode(encoded_jwt1, "mysecret", algorithms=["HS256"])
         return jsonify({
             "data": {
                 "id": decode_jwt["id"],
                 "name": decode_jwt["name"],
-                "email": decode_jwt["email"]
+                "email": decode_jwt["email"],
+                "password":userdata[0]
             }
             }),200
 
@@ -104,3 +110,35 @@ def signout():
     signout_jsonData=jsonify({"ok": True})
     signout_jsonData.set_cookie(key='memberData', value='', expires=0)
     return signout_jsonData,200
+
+#修改使用者密碼
+@status.route("/api/users",methods=["PATCH"])
+def revise():
+    try:
+        cnx=cnxpool.get_connection()
+        cursor=cnx.cursor()
+        modify_password= request.form.get('modify_password')
+        modify_password2=request.form.get('modify_password2')
+
+        encoded_jwt=request.cookies.get('memberData')
+        decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
+        user_id=decode_jwt["id"]
+
+        if modify_password != modify_password2:
+            return jsonify({
+            "error": True,
+            "message": "兩次新密碼輸入不一致"
+            }),400
+        else:
+            cursor.execute("UPDATE `tripmember` SET `password`=%s WHERE `id`=%s;",(modify_password,user_id))
+            return jsonify({"ok": True}),200
+    except:
+        cnx.rollback()
+        return jsonify({
+            "error": True,
+            "message": "伺服器內部錯誤"
+            }),500
+    finally:
+        cursor.close()
+        cnx.commit()
+        cnx.close()

@@ -3,6 +3,9 @@ let number;
 let datalength;
 let statusData;
 
+//抓每一頁要呈現的資料
+getattraction()
+
 //設定不行輸入過去日期
 let date_now=new Date();
 let year=date_now.getFullYear();
@@ -15,7 +18,7 @@ function length(obj) {
     return Object.keys(obj).length;
 }
 
-//抓每一頁要呈現的資料
+//抓每頁資料的函式
 function getattraction(){
     //檢查會員登入狀態
     let preSignin=document.getElementById("preSignin");
