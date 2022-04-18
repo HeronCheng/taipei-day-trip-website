@@ -115,10 +115,10 @@ table th{
     cursor: pointer;
 }
 #pic3 {
-    position: relative;
+    position: absolute;
     z-index: 20;
-    top: 3%;
-    left: -8%;
+    top: 48%;
+    left: -7%;
     opacity: 0.5;
     display: none;
 }
@@ -126,9 +126,9 @@ table th{
     cursor: pointer;
 }
 #pic4 {
-    position: relative;
+    position: absolute;
     z-index: 20;
-    top: -27%;
+    top: 47%;
     left: 100%;
     opacity: 0.5;
     display: none;
@@ -257,6 +257,13 @@ table th{
     .titlemain {
         width: 500px;
     }
+    #pic4{
+        top: 61%;
+    }
+    #pic3{
+        top: 57%;
+        left: -9%;
+    }
   }
   
   @media screen and (max-width: 670px) {
@@ -287,5 +294,15 @@ table th{
     .rightpart{
         width: 350px;
     }
+    #pic4{
+        left: 95%;
+    }
   }
-  
+  @media screen and (max-width: 415px) {
+      #pic3{
+        left: -2%;
+      }
+      #pic4{
+        left: 86%;
+      }
+  }
