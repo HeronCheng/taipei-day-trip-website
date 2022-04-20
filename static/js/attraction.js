@@ -3,6 +3,11 @@ let number;
 let datalength;
 let statusData;
 
+//設定網址參數
+const url = new URL(location.href);
+url.searchParams.set('random', Math.random());
+history.pushState(null, '', url);
+
 //抓每一頁要呈現的資料
 getattraction()
 

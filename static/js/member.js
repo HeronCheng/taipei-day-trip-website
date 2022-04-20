@@ -2,6 +2,11 @@ let userpassword;
 let oldorder_number;
 let this_ordernumber;
 
+//設定網址參數
+const url = new URL(location.href);
+url.searchParams.set('random', Math.random());
+history.pushState(null, '', url);
+
 checkStatus()
 
 function checkStatus(){
