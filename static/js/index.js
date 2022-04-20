@@ -120,14 +120,13 @@ function getData(page){
 
 //回到最上面的按鈕函式
 function backtotop(){
-    
     window.scrollBy(0,-60);
     scrolldelay = setTimeout(backtotop,10);
     if(document.documentElement.scrollTop==0){
         clearTimeout(scrolldelay);
     }
-    document.querySelector("#totopicon").style.display="none";
 }
+
 
 //搜尋關鍵字後先把首頁資料移除
 function remove(){
