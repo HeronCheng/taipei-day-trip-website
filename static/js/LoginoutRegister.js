@@ -4,6 +4,7 @@ let signin=document.getElementById("signin");
 let signup=document.getElementById("signup");
 let dark=document.getElementById("dark");
 let booksuccess=document.getElementById("booksuccess");
+let revise_window=document.getElementById("revise")
 
 
 //跳出登入視窗且背景轉暗
@@ -67,9 +68,10 @@ function darkover(){
     signin.style.display="none";
     signup.style.display="none";
     dark.style.display="none";
-    booksuccess.style.display="none";
-    revise_window.style.display="none";
-
+    if(revise_window.style.display="block"){
+        revise_window.style.display="none";
+    }
+    
     location.reload()
 }
 

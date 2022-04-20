@@ -128,6 +128,18 @@ input {
   font-size: 15px;
   text-align: right;
 }
+#totopicon{
+  position: fixed;
+  width: 50px;
+  bottom: 15%;
+  left: 93%;
+  display: none;
+  opacity: 0.5;
+  z-index: 20;
+}
+#totopicon:hover{
+  cursor: pointer;
+}
 .footer {
   height: 104px;
   background-color: #757575;
@@ -212,6 +224,11 @@ input {
     width: 600px;
   }
 }
+@media screen and (max-width: 730px){
+  #totopicon{
+    left: 91%;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .lefttitle {
@@ -262,5 +279,10 @@ input {
   }
   .outside {
     width: 320px;
+  }
+}
+@media screen and (max-width: 500px){
+  #totopicon{
+    left: 79%;
   }
 }

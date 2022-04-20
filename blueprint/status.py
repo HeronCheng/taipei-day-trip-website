@@ -83,17 +83,17 @@ def signin():
 @status.route("/api/user",methods=["GET"])
 def getstatus():
     encoded_jwt=request.cookies.get('memberData')
-    decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
-    cnx=cnxpool.get_connection()
-    cursor=cnx.cursor()
-    cursor.execute("SELECT `password` from `tripmember` WHERE `id`='"+str(decode_jwt["id"])+"';")
-    userdata=cursor.fetchone()
-    cursor.close()
-    cnx.close()
     if encoded_jwt==None:
         return jsonify({
         "data":None}),200
     else:
+        decode_jwt=jwt.decode(encoded_jwt, "mysecret", algorithms=["HS256"])
+        cnx=cnxpool.get_connection()
+        cursor=cnx.cursor()
+        cursor.execute("SELECT `password` from `tripmember` WHERE `id`='"+str(decode_jwt["id"])+"';")
+        userdata=cursor.fetchone()
+        cursor.close()
+        cnx.close()
         return jsonify({
             "data": {
                 "id": decode_jwt["id"],

@@ -107,15 +107,27 @@ function getData(page){
     if(data == null){
     document.addEventListener("scroll", lazyLoad)
     function lazyLoad() {
+        document.querySelector("#totopicon").style.display="block";
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) { 
-            if (next_page==null){document.removeEventListener("scroll", lazyLoad)}
+            if (next_page==null){
+                document.removeEventListener("scroll", lazyLoad);
+            }
             else{getData(next_page)};
             }  
     }
     }
 }
 
-
+//回到最上面的按鈕函式
+function backtotop(){
+    
+    window.scrollBy(0,-60);
+    scrolldelay = setTimeout(backtotop,10);
+    if(document.documentElement.scrollTop==0){
+        clearTimeout(scrolldelay);
+    }
+    document.querySelector("#totopicon").style.display="none";
+}
 
 //搜尋關鍵字後先把首頁資料移除
 function remove(){
@@ -192,6 +204,7 @@ function query(anotherpage){
     //關鍵字資料的scroll事件
     document.addEventListener("scroll", lazyLoad2)
     function lazyLoad2() {
+        document.querySelector("#totopicon").style.display="block";
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) {    
             console.log(data)
             if (queryNextpage==null){document.removeEventListener("scroll", lazyLoad2)}
