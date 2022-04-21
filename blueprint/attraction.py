@@ -4,7 +4,7 @@ from cnxpool import cnxpool
 import re
 
 attraction=Blueprint("attraction",__name__)
-CORS(attraction)
+# CORS(attraction)
 
 #根據景點編號取得景點資料
 @attraction.route("/api/attraction/<attractionId>",methods=["GET"])

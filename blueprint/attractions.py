@@ -4,7 +4,7 @@ from cnxpool import cnxpool
 from blueprint.definition import loops
 
 attractions=Blueprint("attractions",__name__)
-CORS(attractions)
+# CORS(attractions)
 
 #取得景點資料列表
 @attractions.route("/api/attractions",methods=["GET"])

@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 order=Blueprint("order",__name__)
 
-CORS(order)
+# CORS(order)
 
 load_dotenv()
 
