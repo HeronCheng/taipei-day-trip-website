@@ -36,7 +36,7 @@ function getData(page){
             if(count != null){
                 let img=document.createElement("img");
                 img.setAttribute("class","bookcarticon");
-                img.src="../static/pic/icons"+count+".png"
+                img.src="/static/pic/icons"+count+".png"
                 let position=document.getElementById("righttitle1");
                 position.appendChild(img);
                 position.style.marginRight="25px";

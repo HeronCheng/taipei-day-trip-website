@@ -45,7 +45,7 @@ function checkStatus(){
             if(count != null){
                 let img=document.createElement("img");
                 img.setAttribute("class","bookcarticon");
-                img.src="../static/pic/icons"+count+".png"
+                img.src="/static/pic/icons"+count+".png"
                 let position=document.getElementById("righttitle1");
                 position.appendChild(img);
                 position.style.marginRight="25px";
@@ -160,7 +160,7 @@ function checkStatus(){
                         text5.appendChild(b_address);
 
                         let delete_icon=document.createElement("img");
-                        delete_icon.src="../static/pic/icon_delete.png";
+                        delete_icon.src="/static/pic/icon_delete.png";
                         delete_icon.setAttribute("class","delete_icon")
                         delete_icon.setAttribute("id","delete_icon"+datanumber)
                         delete_icon.setAttribute("onclick","deletebooking("+datanumber+")");

@@ -7,25 +7,25 @@
     <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
     <META HTTP-EQUIV="expires" CONTENT="0">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/pic/bx-building-house.svg">
     <title>台北一日遊</title>
-    <link href="../static/css/same.css" rel="stylesheet"/>
+    <link href="/static/css/same.css" rel="stylesheet"/>
     {% block head %}{% endblock %}
 </head>
 <body onselectstart="return false">
     <div id="signin" class="template">
         <div class="decorator"></div>
-        <div class="sign_title">登入會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
+        <div class="sign_title">登入會員帳號<img src="/static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
         <form onsubmit="goSignin()">
         <div style="position:relative">
             <input type="email" placeholder="輸入電子信箱" class="sign sign1" id="signin_email" onkeyup="verify(this)" required>
-            <img src="../static/pic/check.png" class="ok" id="signin_email_ok">
-            <img src="../static/pic/close.png" class="notok" id="signin_email_notok">
+            <img src="/static/pic/check.png" class="ok" id="signin_email_ok">
+            <img src="/static/pic/close.png" class="notok" id="signin_email_notok">
         </div>
         <div style="position:relative">
             <input type="password" placeholder="輸入密碼" class="sign sign1" id="signin_password" onkeyup="verify(this)" required>
-            <img src="../static/pic/check.png" class="ok" id="signin_password_ok">
-            <img src="../static/pic/close.png" class="notok" id="signin_password_notok">
+            <img src="/static/pic/check.png" class="ok" id="signin_password_ok">
+            <img src="/static/pic/close.png" class="notok" id="signin_password_notok">
         </div>
         <button type="submit" class="sign submit" >登入帳戶</button>
         <div id="in_message" class="message"></div>
@@ -34,22 +34,22 @@
     </div>
     <div id="signup">
         <div class="decorator"></div>
-        <div class="sign_title">註冊會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
+        <div class="sign_title">註冊會員帳號<img src="/static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
         <form onsubmit="goSignup()">
         <div style="position:relative">
             <input type="text"  placeholder="輸入姓名" class="sign in sign1" id="signup_username" onkeyup="verify(this)" required >
-            <img src="../static/pic/check.png" class="ok" id="signup_username_ok">
-            <img src="../static/pic/close.png" class="notok" id="signup_username_notok">
+            <img src="/static/pic/check.png" class="ok" id="signup_username_ok">
+            <img src="/static/pic/close.png" class="notok" id="signup_username_notok">
         </div>
         <div style="position:relative">
             <input type="email"  placeholder="輸入電子信箱" class="sign in sign1" id="signup_email" onkeyup="verify(this)" required >
-            <img src="../static/pic/check.png" class="ok" id="signup_email_ok">
-            <img src="../static/pic/close.png" class="notok" id="signup_email_notok">
+            <img src="/static/pic/check.png" class="ok" id="signup_email_ok">
+            <img src="/static/pic/close.png" class="notok" id="signup_email_notok">
         </div>
         <div style="position:relative">
             <input type="password"  placeholder="輸入密碼" class="sign in sign1" id="signup_password" onkeyup="verify(this)" required >
-            <img src="../static/pic/check.png" class="ok" id="signup_password_ok">
-            <img src="../static/pic/close.png" class="notok" id="signup_password_notok">
+            <img src="/static/pic/check.png" class="ok" id="signup_password_ok">
+            <img src="/static/pic/close.png" class="notok" id="signup_password_notok">
         </div>
         <button type="submit" class="sign submit" >註冊新帳戶</button>
         <div id="up_message"></div>
@@ -57,7 +57,7 @@
         <button class="switch" onclick="tosignin()">已經有帳戶了?點此登入</button>
     </div>
     <div id="dark" onclick="darkover()"></div>
-    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
+    <div id="loading"><img src="/static/pic/loading1.gif" id="loadingicon"></div>
     <div class="title">
         <nav class="titlemain">
             <a href="/" class="lefttitle">台北一日遊</a>

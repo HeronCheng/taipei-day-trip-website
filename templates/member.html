@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
 {% block head %}
-<link href="../static/css/member.css" rel="stylesheet"/>
-<link href="../static/css/signinup.css" rel="stylesheet"/>
+<link href="/static/css/member.css" rel="stylesheet"/>
+<link href="/static/css/signinup.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
 <div id="revise" class="template">
     <div class="decorator"></div>
-    <div class="sign_title">修改會員密碼<img src="../static/pic/x-mark.png" class="cross" onclick="darkover3()"></div>
+    <div class="sign_title">修改會員密碼<img src="/static/pic/x-mark.png" class="cross" onclick="darkover3()"></div>
     <form onsubmit="gorevise()">
     <div style="position:relative">
         <input type="password" placeholder="請輸入新密碼" class="sign sign1" id="modify_password" onkeyup="verify(this)" required>
-        <img src="../static/pic/check.png" class="ok" id="signin_email_ok">
-        <img src="../static/pic/close.png" class="notok" id="signin_email_notok">
+        <img src="/static/pic/check.png" class="ok" id="signin_email_ok">
+        <img src="/static/pic/close.png" class="notok" id="signin_email_notok">
     </div>
     <div style="position:relative">
         <input type="password" placeholder="請再次輸入新密碼" class="sign sign1" id="modify_password2" onkeyup="verify(this)" required>
-        <img src="../static/pic/check.png" class="ok" id="signin_password_ok">
-        <img src="../static/pic/close.png" class="notok" id="signin_password_notok">
+        <img src="/static/pic/check.png" class="ok" id="signin_password_ok">
+        <img src="/static/pic/close.png" class="notok" id="signin_password_notok">
     </div>
     <button type="submit" class="sign submit" >確定修改密碼</button>
     <div id="revise_message" class="message"></div>
@@ -37,8 +37,8 @@
             </tr>
             <tr>
             <th class="member_data">密碼 :  </th><td id="member_password_outside"><span id="member_password_inside">✽✽✽✽✽</span>
-                <img src="../static/pic/hidden.png" class="secret" onclick="tosee()" id="secret">
-                <img src="../static/pic/eye.png" class="secret" id="see" onclick="nottosee()"></td>
+                <img src="/static/pic/hidden.png" class="secret" onclick="tosee()" id="secret">
+                <img src="/static/pic/eye.png" class="secret" id="see" onclick="nottosee()"></td>
             </tr>
         </table>
         <button onclick="tomodify()" class="modify">修改會員密碼</button>
@@ -54,8 +54,8 @@
               <th class="width1">查看訂單詳細</th>
             </tr>
           </table>
-          <img src="../static/pic/btn_leftArrow.png" id="pic3" onclick="backto()">
-          <img src="../static/pic/btn_rightArrow.png" id="pic4" onclick="gonext()">
+          <img src="/static/pic/btn_leftArrow.png" id="pic3" onclick="backto()">
+          <img src="/static/pic/btn_rightArrow.png" id="pic4" onclick="gonext()">
           <button onclick="tosignin_out()" class="exit">登出系統</button>
     </div>
 </div>
@@ -63,6 +63,6 @@
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript" src="../static/js/member.js"></script>
-<script type="text/javascript" src="../static/js/LoginoutRegister.js"></script>
+<script type="text/javascript" src="/static/js/member.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
 {% endblock %}

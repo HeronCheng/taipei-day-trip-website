@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block head %}
-<link href="../static/css/index.css" rel="stylesheet"/> 
-<link href="../static/css/signinup.css" rel="stylesheet"/>
+<link href="/static/css/index.css" rel="stylesheet"/> 
+<link href="/static/css/signinup.css" rel="stylesheet"/>
 {% endblock %}
     
 {% block content %}
@@ -11,16 +11,16 @@
     <div class="slogan">探索每個角落，體驗城市的深度旅遊行程</div>
     <div class="query">
     <input type="text" placeholder="輸入景點名稱查詢" id="query">
-    <button class="button" onclick="remove(query(0))"><img src="../static/pic/icon_search.png" class="img1" /></button>
+    <button class="button" onclick="remove(query(0))"><img src="/static/pic/icon_search.png" class="img1" /></button>
     </div>
-    <img src="../static/pic/welcome.png" class="picture"> 
+    <img src="/static/pic/welcome.png" class="picture"> 
 </div>
 <div id="attractions" class="attractions">
 </div>
-<img src="../static/pic/arrow.png" id="totopicon" onclick="backtotop()">
+<img src="/static/pic/arrow.png" id="totopicon" onclick="backtotop()">
 {% endblock %}
    
 {% block js %}
-<script type="text/javascript" src="../static/js/index.js"></script>
-<script type="text/javascript" src="../static/js/LoginoutRegister.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
 {% endblock %}    

@@ -2,8 +2,8 @@
 
     
 {% block head %}
-<link href="../static/css/attraction.css" rel="stylesheet"/>
-<link href="../static/css/signinup.css" rel="stylesheet"/>
+<link href="/static/css/attraction.css" rel="stylesheet"/>
+<link href="/static/css/signinup.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
@@ -16,8 +16,8 @@
 
 <div class="upper" id="upper">        
 <div id="pic">
-    <img src="../static/pic/btn_leftArrow.png" id="pic3" onmouseover="enter1()" onmouseout="leave1()" onclick="switchto1()">
-    <img src="../static/pic/btn_rightArrow.png" id="pic4" onmouseover="enter2()" onmouseout="leave2()" onclick="switchto2()">
+    <img src="/static/pic/btn_leftArrow.png" id="pic3" onmouseover="enter1()" onmouseout="leave1()" onclick="switchto1()">
+    <img src="/static/pic/btn_rightArrow.png" id="pic4" onmouseover="enter2()" onmouseout="leave2()" onclick="switchto2()">
     <div id="ball"></div>
 </div>
 <div class="parttwo">
@@ -29,12 +29,12 @@
         <div class="b_date" >選擇日期：<input id="date" type="date" required></div>
         <div class="b_time" >選擇時間：
             <span onclick="changetime1()" class="halfday">
-                <img src="../static/pic/Ellipse 2.png" id="green1">
-                <img src="../static/pic/Ellipse 1.png" id="white1">
+                <img src="/static/pic/Ellipse 2.png" id="green1">
+                <img src="/static/pic/Ellipse 1.png" id="white1">
             </span><span class="half_day1">上半天</span>
             <span onclick="changetime2()" class="halfday">
-                <img src="../static/pic/Ellipse 2.png" id="green2" >
-                <img src="../static/pic/Ellipse 1.png" id="white2">
+                <img src="/static/pic/Ellipse 2.png" id="green2" >
+                <img src="/static/pic/Ellipse 1.png" id="white2">
             </span><span class="half_day2">下半天</span>
         </div>
         <div class="b_fee">導覽費用：<span id="money2000">新台幣 2000 元</span><span id="money2500">新台幣 2500 元</span></div>
@@ -52,7 +52,7 @@
 {% endblock %}
       
 {% block js %}
-<script type="text/javascript" src="../static/js/attraction.js"></script>
-<script type="text/javascript" src="../static/js/LoginoutRegister.js"></script>
+<script type="text/javascript" src="/static/js/attraction.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
 {% endblock %}
     
