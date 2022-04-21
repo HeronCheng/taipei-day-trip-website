@@ -48,7 +48,7 @@ function getattraction(){
             if(count != null){
                 let img=document.createElement("img");
                 img.setAttribute("class","bookcarticon");
-                img.src="../static/pic/icons"+count+".png"
+                img.src="/static/pic/icons"+count+".png"
                 let position=document.getElementById("righttitle1");
                 position.appendChild(img);
                 position.style.marginRight="25px";
@@ -97,11 +97,11 @@ function getattraction(){
             let wtSpot=document.createElement("img");
             wtSpot.setAttribute("id","wtId"+number)
             wtSpot.setAttribute("class","wtspot");
-            wtSpot.src="../static/pic/white circle.png";
+            wtSpot.src="/static/pic/white circle.png";
             let bkSpot=document.createElement("img");
             bkSpot.setAttribute("id","bkId"+number);
             bkSpot.setAttribute("class","bkspot");
-            bkSpot.src="../static/pic/circle current.png";
+            bkSpot.src="/static/pic/circle current.png";
             document.getElementById("ball");
             ball.appendChild(wtSpot);
             ball.appendChild(bkSpot);

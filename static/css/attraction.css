@@ -142,7 +142,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: rgba(0, 0, 0, 0);
   opacity: 1;
   display: block;
-  background: url("../pic/icon_calendar.png") no-repeat;
+  background: url("/pic/icon_calendar.png") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;
