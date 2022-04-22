@@ -13,11 +13,6 @@ let forth=document.getElementById("forth");
 let nodatahere=document.getElementById("nodatahere");
 let footer=document.getElementById("footer");
 
-//設定網址參數
-const url = new URL(location.href);
-url.searchParams.set('random', Math.random());
-history.pushState(null, '', url);
-
 //抓頁面資料
 checkStatus()
 

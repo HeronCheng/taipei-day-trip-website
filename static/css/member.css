@@ -1,5 +1,6 @@
 body{
     color: #666666;
+    overflow-x: hidden;
 }
 .main{
     width: 1200px;
@@ -75,11 +76,16 @@ body{
     width: 103px;
     display: inline-block;
 }
+.tableOutside{
+    height: 349px;
+}
 table{
     border-collapse: collapse;  
     border-spacing: 0;
     padding:10px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 table th,td{
     border-top: 1px solid #666666;
@@ -238,17 +244,17 @@ table th{
         margin-right: auto;
     }
     .modify {
-        left: 32%;
+        left: 29%;
         top: 80%;
     }
     .rightpart{
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 110px;
+        padding-bottom: 110px;
     }
     .exit{
         position: absolute;
-        bottom: -19%;
+        bottom: 10%;
         right: 31%;
     }
     .member_title{
@@ -258,10 +264,10 @@ table th{
         width: 500px;
     }
     #pic4{
-        top: 61%;
+        top: 49%;
     }
     #pic3{
-        top: 57%;
+        top: 49%;
         left: -9%;
     }
   }
@@ -271,7 +277,7 @@ table th{
         width: 120px;
     }
     .member_data td {
-        width: 200px;
+        width: 190px;
     }
     .width1 {
         width: 96px;
@@ -303,6 +309,6 @@ table th{
         left: -2%;
       }
       #pic4{
-        left: 86%;
+        left: 89%;
       }
   }

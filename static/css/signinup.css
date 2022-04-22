@@ -25,7 +25,7 @@
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 275px;
   top:0%;
   display: none;
@@ -57,7 +57,7 @@
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 332px;
   bottom: 51%;
   display: none;
@@ -69,7 +69,7 @@
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 250px;
   top:0%;
   display: none;
@@ -95,7 +95,7 @@
   }
 }
 .decorator {
-  width: 340px;
+  width: 330px;
   height: 10px;
   background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
   border-radius: 6px 6px 0px 0px;
@@ -120,7 +120,7 @@
   cursor: pointer;
 }
 .sign {
-  width: 310px;
+  width: 300px;
   height: 47px;
   border: 1px solid #cccccc;
   box-sizing: border-box;
@@ -131,6 +131,7 @@
 }
 .sign1{
   padding-left: 15px;
+  font-size: 16px;
 }
 .ok{
   width: 30px;
@@ -150,6 +151,7 @@
   background: #448899;
   border: none;
   color: #ffffff;
+  font-size: 16px;
 }
 .submit:hover {
   cursor: pointer;
@@ -217,6 +219,12 @@
     top: 10%;
   }
 }
+@media screen and (max-width: 660px){
+  #booksuccess {
+    left: 23%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #signin {
     left: 22%;
@@ -231,5 +239,13 @@
   }
   #signup {
     left: 1%;
+  }
+  #booksuccess {
+    left: 13%;
+  }
+}
+@media screen and (max-width: 400px){
+  #booksuccess {
+    left: 4%;
   }
 }

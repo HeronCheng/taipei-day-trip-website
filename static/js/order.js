@@ -1,8 +1,3 @@
-//設定網址參數
-const url = new URL(location.href);
-url.searchParams.set('random', Math.random());
-history.pushState(null, '', url);
-
 
 checkStatus()
 

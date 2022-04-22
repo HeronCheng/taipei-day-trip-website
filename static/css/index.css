@@ -238,20 +238,15 @@ input {
 }
 
 @media screen and (max-width: 650px) {
-  .lefttitle {
-    margin-left: 10px;
-  }
   .subtitle {
     width: 320px;
     height: 41px;
-    margin-left: 20px;
     z-index: 30;
   }
   .slogan {
     width: 320px;
     height: 22px;
     font-size: 14px;
-    margin-left: 20px;
     z-index: 30;
   }
   input {

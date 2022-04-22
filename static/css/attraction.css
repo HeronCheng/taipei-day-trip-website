@@ -142,7 +142,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: rgba(0, 0, 0, 0);
   opacity: 1;
   display: block;
-  background: url("/pic/icon_calendar.png") no-repeat;
+  background: url("../pic/icon_calendar.png") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;
@@ -428,6 +428,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   #booking {
     width: 600px;
     height: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
   #green1 {
     left: 16%;
@@ -526,9 +528,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   #titlename {
     width: 400px;
+    margin-left:5px;
   }
   #subtitle {
     width: 400px;
+    margin-left:5px;
   }
   #booking {
     width: 400px;
@@ -550,7 +554,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: 10px;
   }
   .titlemain {
-    width: 360px;
+    width: 350px;
   }
   #pic {
     width: 100%;
@@ -624,7 +628,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-left: 46px;
   }
   .lower {
-    width: 330px;
+    width: 315px;
   }
   #titlename {
     width: 330px;
@@ -633,13 +637,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 330px;
   }
   #booking {
-    width: 330px;
+    width: 315px;
     height: 330px;
   }
   .b_date {
     margin-top: 18px;
   }
   .line {
-    width: 330px;
+    width: 315px;
   }
 }

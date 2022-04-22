@@ -3,11 +3,6 @@ let data=null;
 let loading=false;
 let statusData;
 
-//設定網址參數
-const url = new URL(location.href);
-url.searchParams.set('random', Math.random());
-history.pushState(null, '', url);
-
 //先載入首頁資料
 getData(0);
 
