@@ -4,6 +4,7 @@
   margin-bottom: 25px;
   padding-top: 54px;
   position: relative;
+  overflow: hidden;
 }
 .outside {
   width: 1200px;
@@ -132,7 +133,7 @@ input {
   position: fixed;
   width: 50px;
   bottom: 15%;
-  left: 93%;
+  left: 96%;
   display: none;
   opacity: 0.5;
   z-index: 20;
@@ -153,7 +154,7 @@ input {
   line-height: 104px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   input {
     width: 315px;
     height: 46px;
@@ -187,9 +188,12 @@ input {
   .slogan {
     width: 900px;
   }
+  #totopicon{
+    left: 95%;
+  }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
   input {
     width: 315px;
     height: 46px;
@@ -223,14 +227,17 @@ input {
   .slogan {
     width: 600px;
   }
+  #totopicon{
+    left: 93%;
+  }
 }
 @media screen and (max-width: 730px){
   #totopicon{
-    left: 91%;
+    left: 93%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .lefttitle {
     margin-left: 10px;
   }
@@ -280,9 +287,12 @@ input {
   .outside {
     width: 320px;
   }
+  #totopicon{
+    left: 91%;
+  }
 }
 @media screen and (max-width: 500px){
   #totopicon{
-    left: 79%;
+    left: 85%;
   }
 }
