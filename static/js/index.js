@@ -107,7 +107,6 @@ function getData(page){
     if(data == null){
     document.addEventListener("scroll", lazyLoad)
     function lazyLoad() {
-        document.querySelector("#totopicon").style.display="block";
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) { 
             if (next_page==null){
                 document.removeEventListener("scroll", lazyLoad);
@@ -120,10 +119,20 @@ function getData(page){
 
 //回到最上面的按鈕函式
 function backtotop(){
-    window.scrollBy(0,-60);
+    window.scrollBy(0,-100);
     scrolldelay = setTimeout(backtotop,10);
     if(document.documentElement.scrollTop==0){
         clearTimeout(scrolldelay);
+    }
+}
+
+//回到最上面按鈕的scroll事件
+window.onscroll = ()=>{  
+    if(document.documentElement.scrollTop>200){
+        document.querySelector("#totopicon").style.display="block";
+    }
+    else{
+        document.querySelector("#totopicon").style.display="none";
     }
 }
 
@@ -203,7 +212,6 @@ function query(anotherpage){
     //關鍵字資料的scroll事件
     document.addEventListener("scroll", lazyLoad2)
     function lazyLoad2() {
-        document.querySelector("#totopicon").style.display="block";
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) {    
             console.log(data)
             if (queryNextpage==null){document.removeEventListener("scroll", lazyLoad2)}

@@ -108,7 +108,7 @@ table th{
     background: #448899;
     border-radius: 5px;
     color: #FFFFFF;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 16px;
     border: none;
     width: 145px;
@@ -280,10 +280,10 @@ table th{
         width: 190px;
     }
     .width1 {
-        width: 96px;
+        width: 70px;
     }
     .width2 {
-        width: 48px;
+        width: 61px;
     }
     .main{
         width: 350px;

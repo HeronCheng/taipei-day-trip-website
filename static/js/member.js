@@ -65,7 +65,7 @@ function get_oldorder(start,howmany){
             column3.innerHTML="未付款";
         }
         let column4_link=document.createElement("div");
-        column4_link.innerHTML="查看訂單詳細";
+        column4_link.innerHTML="查看訂單";
         hyperlink.appendChild(column4_link);
         column4.appendChild(hyperlink);
         row.appendChild(column1);
