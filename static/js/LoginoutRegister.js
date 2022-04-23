@@ -67,43 +67,15 @@ function darkover(){
     document.getElementById("signup_username_ok").style.display="none";
     signin.style.display="none";
     signup.style.display="none";
-    dark.style.display="none";
-    if(revise_window.style.display=="block"){
-        revise_window.style.display="none";
-    }
     
+    revise_window.style.display="none";
+
+    
+    booksuccess.style.display="none";
+
+    dark.style.display="none";
     location.reload()
 }
-
-//attraction頁面的關閉登入視窗
-function darkover2(){
-    //關閉視窗前先把input的value清空
-    let i=0;
-    while(i<6){
-        document.getElementsByTagName('input')[i].value="";
-        i++;
-    }
-    //關視窗前先把驗證icon關掉
-    document.getElementById("signin_email_notok").style.display="none";
-    document.getElementById("signin_email_ok").style.display="none";
-    document.getElementById("signup_email_ok").style.display="none";
-    document.getElementById("signup_email_notok").style.display="none";
-    document.getElementById("signin_password_notok").style.display="none";
-    document.getElementById("signin_password_ok").style.display="none";
-    document.getElementById("signup_password_ok").style.display="none";
-    document.getElementById("signup_password_notok").style.display="none";
-    document.getElementById("signup_username_notok").style.display="none";
-    document.getElementById("signup_username_ok").style.display="none";
-    dark.style.display="none";
-    signin.style.display="none";
-    signup.style.display="none";
-    if (booksuccess.style.display=="block"){
-        booksuccess.style.display="none";
-        location.reload();
-    }
-}
-
-
 
 
 // 前端進行輸入驗證

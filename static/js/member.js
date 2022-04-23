@@ -181,7 +181,7 @@ function nottosee(){
 }
 
 
-let revise_window=document.getElementById("revise")
+
 //修改密碼視窗
 function tomodify(){
     revise_window.style.display="block";
