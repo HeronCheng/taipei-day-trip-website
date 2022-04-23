@@ -94,3 +94,9 @@ a:hover {
   text-align: center;
   line-height: 104px;
 }
+
+@media screen and (max-width: 400px){
+  .lefttitle {
+    font-size: 28px;
+}
+}
