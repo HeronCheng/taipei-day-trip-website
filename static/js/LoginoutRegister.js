@@ -68,7 +68,7 @@ function darkover(){
     signin.style.display="none";
     signup.style.display="none";
     dark.style.display="none";
-    if(revise_window.style.display="block"){
+    if(revise_window.style.display=="block"){
         revise_window.style.display="none";
     }
     

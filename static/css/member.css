@@ -270,6 +270,9 @@ table th{
         top: 49%;
         left: -9%;
     }
+    #revise{
+        left: 31%;
+    }
   }
   
   @media screen and (max-width: 670px) {
@@ -303,6 +306,14 @@ table th{
     #pic4{
         left: 95%;
     }
+    #revise{
+        left: 24%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    #revise{
+        left: 15%;
+    }
   }
   @media screen and (max-width: 415px) {
       #pic3{
@@ -311,4 +322,7 @@ table th{
       #pic4{
         left: 89%;
       }
+      #revise{
+        left: 2%;
+    }
   }
