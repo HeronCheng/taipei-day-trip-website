@@ -1,72 +1,57 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
-    <title>台北一日遊</title>
-    <link href="../static/booking.css" rel="stylesheet"/>
-    <link href="../static/same.css" rel="stylesheet"/>
-    <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
-</head>
-<body onload="checkStatus()" ; onselectstart="return false">
-    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
-    <div class="title">
-        <nav class="titlemain">
-            <a href="/" class="lefttitle">台北一日遊</a>
-            <div class="space"></div>
-            <a id="righttitle1" onclick="trytobook()">預定行程</a>
-            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
-        </nav>
+{% extends "base.html" %}
+
+{% block head %}
+<link href="/static/css/booking.css" rel="stylesheet"/>
+<link href="/static/css/signinup.css" rel="stylesheet"/>
+<script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
+{% endblock %}
+
+{% block content %}
+<div class="first_part" id="first_part">
+    <div class="subtitle">您好，<span id="username"></span>，待預定的行程如下:</div>
+    <div id="nodatahere"></div>
+    <div id="bookingdata"></div>
+</div>
+<div class="line" id="line1"></div>
+<form onsubmit="gopay()">
+<div class="second_part" id="second">
+    <div class="contact">
+    <div class="contactdata">您的聯絡資訊</div>
+    <div class="contactname">聯絡姓名：<input type="text" id="contactperson" required></div>
+    <div class="contactemail">連絡信箱：<input type="email" id="contact_email" required></div>
+    <div class="contactnumber">手機號碼：<input type="tel" required pattern="^09[0-9]{8}$" maxlength="10" id="contact_tel" required></div>
+    <div class="notice">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
     </div>
-    <div class="first_part" id="first_part">
-        <div class="subtitle">您好，<span id="username"></span>，待預定的行程如下:</div>
-        <div id="nodatahere"></div>
-        <div id="bookingdata"></div>
+</div>
+<div class="line" id="line2"></div>
+<div class="third_part" id="third">
+    <div class="pay">
+    <div class="creditcard">信用卡付款資訊</div>
+    <div class="form-group card-number-group">
+        <span for="card-number" class="control-label cardnumber_title">卡片號碼：</span>
+        <div class="form-control card-number tpfield " id="card-number"></div>
+    </div>    
+    <br/>
+    <div class="form-group expiration-date-group">
+        <span for="expiration-date" class="control-label">過期時間：</span>
+        <div class="tpfield form-control expiration-date " id="tappay-expiration-date"></div>
+    </div>    
+    <br/>
+    <div class="form-group cvc-group">
+        <span for="cvc" class="control-label">驗證密碼：</span>
+        <div class="tpfield form-control cvc " id="card-ccv"></div>
     </div>
-    <div class="line" id="line1"></div>
-    <div class="second_part" id="second">
-        <div class="contact">
-        <div class="contactdata">您的聯絡資訊</div>
-        <div class="contactname">聯絡姓名：<input type="text" id="contactperson"></div>
-        <div class="contactemail">連絡信箱：<input type="text" id="contact_email"></div>
-        <div class="contactnumber">手機號碼：<input type="tel" required pattern="^09[0-9]{8}$" maxlength="10" id="contact_tel"></div>
-        <div class="notice">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
-        </div>
     </div>
-    <div class="line" id="line2"></div>
-    <form onsubmit="gopay()">
-        <div class="third_part" id="third">
-            
-            <div class="pay">
-            <div class="creditcard">信用卡付款資訊</div>
-            <div class="form-group card-number-group">
-                <span for="card-number" class="control-label cardnumber_title">卡片號碼：</span>
-                <div class="form-control card-number tpfield " id="card-number"></div>
-            </div>    
-            <br/>
-            <div class="form-group expiration-date-group">
-                <span for="expiration-date" class="control-label">過期時間：</span>
-                <div class="tpfield form-control expiration-date " id="tappay-expiration-date"></div>
-            </div>    
-            <br/>
-            <div class="form-group cvc-group">
-                <span for="cvc" class="control-label">驗證密碼：</span>
-                <div class="tpfield form-control cvc " id="card-ccv"></div>
-            </div>
-            </div>
-        </div>
-        <div class="line" id="line3"></div>
-        <div id="forth">
-        <div class="howmuch">總價：新台幣 <span id="total_fee"></span> 元</div>
-        <button type="submit" id="certain">確認訂購並付款</button>
-        </div>
-    </form>
-    <div class="footer" id="footer">
-        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
-    </div>
-    <script type="text/javascript" src="../static/booking.js"></script>
-    <script type="text/javascript" src="../static/validate.js"></script>
-</body>
-</html>
+</div>
+<div class="line" id="line3"></div>
+<div id="forth">
+<div class="howmuch">總價：新台幣 <span id="total_fee"></span> 元</div>
+<button type="submit" id="certain">確認訂購並付款</button>
+</div>
+</form>
+{% endblock %}
+        
+{% block js %}
+<script type="text/javascript" src="/static/js/booking.js"></script>
+<script type="text/javascript" src="/static/js/validate.js"></script>
+{% endblock %}

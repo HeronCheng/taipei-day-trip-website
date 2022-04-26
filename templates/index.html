@@ -1,64 +1,26 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
-    <title>台北一日遊</title>
-    <link href="../static/index.css" rel="stylesheet"/> 
-    <link href="../static/same.css" rel="stylesheet"/>
-    <link href="../static/signinup.css" rel="stylesheet"/>
-</head>
-<body onload="getData(0)"; onselectstart="return false">
-    <div id="signin">
-        <div class="decorator"></div>
-        <div class="sign_title">登入會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
-        <input type="text" placeholder="輸入電子信箱" class="email" id="signin_email">
-        <input type="password" placeholder="輸入密碼" class="password" id="signin_password">
-        <input type="submit" value="登入帳戶" class="submit" onclick="goSignin()">
-        <div id="in_message"></div>
-        <button class="switch" onclick="toregister()">還沒有帳戶?點此註冊</button>
-    </div>
-    <div id="signup">
-        <div class="decorator"></div>
-        <div class="sign_title">註冊會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover()"></div>
-        <input type="text"  placeholder="輸入姓名" class="username" id="signup_username">
-        <input type="text"  placeholder="輸入電子信箱" class="email" id="signup_email">
-        <input type="password"  placeholder="輸入密碼" class="password" id="signup_password">
-        <input type="submit"  value="註冊新帳戶" class="submit" onclick="goSignup()">
-        <div id="up_message"></div>
-        <button class="switch" onclick="tosignin()">已經有帳戶了?點此登入</button>
-    </div>
-    <div id="dark" onclick="darkover()"></div>
-    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
-    <div class="title">
-        <nav class="titlemain">
-            <a href="/" class="lefttitle">台北一日遊</a>
-            <div class="space"></div>
-            <a id="righttitle1" onclick="trytobook()">預定行程</a>
-            <a class="righttitle2" onclick="tosignin_up()" id="preSignin">登入/註冊</a>
-            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
-        </nav>
-    </div>
-   
-    <div class="welcome">
-        <div class="subtitle">輕鬆享受台北一日悠閒</div>
-        <div class="slogan">探索每個角落，體驗城市的深度旅遊行程</div>
-        <div class="query">
-        <input type="text" placeholder="輸入景點名稱查詢" id="query">
-        <button class="button" onclick="remove(query(0))"><img src="../static/pic/icon_search.png" class="img1" /></button>
-        </div>
-        
-        <img src="../static/pic/welcome.png" class="picture"> 
-    </div>
-    <div id="attractions" class="attractions">
-    </div>
-    <div class="footer">
-        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
-    </div>
+{% extends "base.html" %}
+
+{% block head %}
+<link href="/static/css/index.css" rel="stylesheet"/> 
+<link href="/static/css/signinup.css" rel="stylesheet"/>
+{% endblock %}
     
-    <script type="text/javascript" src="../static/index.js"></script>
-    <script type="text/javascript" src="../static/LoginoutRegister.js"></script>
-</body>
-</html>
+{% block content %}
+<div class="welcome">
+    <div class="subtitle">輕鬆享受台北一日悠閒</div>
+    <div class="slogan">探索每個角落，體驗城市的深度旅遊行程</div>
+    <div class="query">
+    <input type="text" placeholder="輸入景點名稱查詢" id="query">
+    <button class="button" onclick="remove(query(0))"><img src="/static/pic/icon_search.png" class="img1" /></button>
+    </div>
+    <img src="/static/pic/welcome.png" class="picture"> 
+</div>
+<div id="attractions" class="attractions">
+</div>
+<img src="/static/pic/arrow.png" id="totopicon" onclick="backtotop()">
+{% endblock %}
+   
+{% block js %}
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
+{% endblock %}    

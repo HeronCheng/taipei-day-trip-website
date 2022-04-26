@@ -1,13 +1,14 @@
 from flask import Blueprint,request,jsonify,current_app
 from flask_cors import CORS
 from cnxpool import cnxpool
-from definition import loops
+from blueprint.definition import loops
 
-Attractions=Blueprint("Attractions",__name__)
-CORS(Attractions)
+attractions=Blueprint("attractions",__name__)
+# CORS(attractions)
 
-@Attractions.route("/api/attractions",methods=["GET"])
-def attractions():
+#取得景點資料列表
+@attractions.route("/api/attractions",methods=["GET"])
+def getattractions():
     current_app.config['JSON_SORT_KEYS'] = False
     cnx=cnxpool.get_connection()
     cursor=cnx.cursor()           
@@ -55,6 +56,7 @@ def attractions():
                 cnx.close()
                 return loops(a=12,result=result,nextpage=nextpage)            
     else:
+        #取得關鍵字的景點列表
         nextpage=str(int(page)+1)
         number=int(page)*12
         realPage=str(number)  
@@ -74,6 +76,7 @@ def attractions():
                 "message":"500 伺服器內部錯誤"
             }),500
         elif allData<12:
+            nextpage=None
             cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE '%"+keyword+"%';")
             result=cursor.fetchall()
             cursor.close()

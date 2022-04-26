@@ -3,12 +3,22 @@ let number;
 let datalength;
 let statusData;
 
+//抓每一頁要呈現的資料
+getattraction()
+
+//設定不行輸入過去日期
+let date_now=new Date();
+let year=date_now.getFullYear();
+let month=date_now.getMonth()+1 < 10 ? "0"+(date_now.getMonth()+1) : (date_now.getMonth()+1)
+let date=date_now.getDate() < 10 ? "0"+ (date_now.getDate()) : (date_now.getDate())
+document.getElementById("date").setAttribute("min",year+"-"+month+"-"+date);
+
 //計算json物件中的元素數量
 function length(obj) {
     return Object.keys(obj).length;
 }
 
-//抓每一頁要呈現的資料
+//抓每頁資料的函式
 function getattraction(){
     //檢查會員登入狀態
     let preSignin=document.getElementById("preSignin");
@@ -33,7 +43,7 @@ function getattraction(){
             if(count != null){
                 let img=document.createElement("img");
                 img.setAttribute("class","bookcarticon");
-                img.src="../static/pic/icons"+count+".png"
+                img.src="/static/pic/icons"+count+".png"
                 let position=document.getElementById("righttitle1");
                 position.appendChild(img);
                 position.style.marginRight="25px";
@@ -74,6 +84,7 @@ function getattraction(){
             let picurl2=document.createElement("img");
             picurl2.setAttribute("class","pic2")
             picurl2.setAttribute("id","id_"+number)
+            picurl2.setAttribute("id","id_"+number)
             picurl2.src=picurl;
             document.getElementById("pic");
             pic.appendChild(picurl2);
@@ -81,11 +92,11 @@ function getattraction(){
             let wtSpot=document.createElement("img");
             wtSpot.setAttribute("id","wtId"+number)
             wtSpot.setAttribute("class","wtspot");
-            wtSpot.src="../static/pic/white circle.png";
+            wtSpot.src="/static/pic/white circle.png";
             let bkSpot=document.createElement("img");
             bkSpot.setAttribute("id","bkId"+number);
             bkSpot.setAttribute("class","bkspot");
-            bkSpot.src="../static/pic/circle current.png";
+            bkSpot.src="/static/pic/circle current.png";
             document.getElementById("ball");
             ball.appendChild(wtSpot);
             ball.appendChild(bkSpot);
@@ -358,7 +369,6 @@ function trytobook(){
 
 
 //建立新的預定行程
-
 function tobook(){
     event.preventDefault()
     if (statusData.data == null){

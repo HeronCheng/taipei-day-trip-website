@@ -18,14 +18,14 @@
 #afterSignin {
   display: none;
 }
-#signin {
+.template {
   border-radius: 6px;
   background: #ffffff;
   box-shadow: 0px 4px 60px #aaaaaa;
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 275px;
   top:0%;
   display: none;
@@ -57,7 +57,7 @@
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 332px;
   bottom: 51%;
   display: none;
@@ -69,7 +69,7 @@
   position: fixed;
   left: 39%;
   z-index: 35;
-  width: 340px;
+  width: 330px;
   height: 250px;
   top:0%;
   display: none;
@@ -95,7 +95,7 @@
   }
 }
 .decorator {
-  width: 340px;
+  width: 330px;
   height: 10px;
   background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
   border-radius: 6px 6px 0px 0px;
@@ -119,8 +119,8 @@
 .cross:hover{
   cursor: pointer;
 }
-.username {
-  width: 310px;
+.sign {
+  width: 300px;
   height: 47px;
   border: 1px solid #cccccc;
   box-sizing: border-box;
@@ -129,36 +129,29 @@
   margin-right: 15px;
   margin-bottom: 10px;
 }
-.email {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+.sign1{
+  padding-left: 15px;
+  font-size: 16px;
 }
-.password {
-  width: 310px;
-  height: 47px;
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+.ok{
+  width: 30px;
+  position: absolute;
+  right: 22px;
+  top: 8px;
+  display: none;
+}
+.notok{
+  width: 30px;
+  position: absolute;
+  right: 22px;
+  top: 8px;
+  display: none;
 }
 .submit {
-  width: 310px;
-  height: 47px;
   background: #448899;
-  border-radius: 5px;
   border: none;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 10px;
   color: #ffffff;
+  font-size: 16px;
 }
 .submit:hover {
   cursor: pointer;
@@ -209,7 +202,7 @@
   margin-top: 35px;
 }
 
-#up_message {
+.message {
   text-align: center;
   font-weight: 400;
   font-size: 16px;
@@ -219,13 +212,40 @@
   margin-bottom: 9px;
   display: none;
 }
-#in_message {
-  text-align: center;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 13px;
-  color: red;
-  margin-top: 5px;
-  margin-bottom: 9px;
-  display: none;
+
+
+@media screen and (max-width: 1200px) {
+  #signin {
+    top: 10%;
+  }
+}
+@media screen and (max-width: 660px){
+  #booksuccess {
+    left: 23%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #signin {
+    left: 22%;
+  }
+  #signup {
+    left: 21%;
+  }
+}
+@media screen and (max-width: 460px) {
+  #signin {
+    left: 1%;
+  }
+  #signup {
+    left: 1%;
+  }
+  #booksuccess {
+    left: 13%;
+  }
+}
+@media screen and (max-width: 400px){
+  #booksuccess {
+    left: 4%;
+  }
 }

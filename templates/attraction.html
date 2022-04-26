@@ -1,91 +1,51 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/pic/bx-building-house.svg">
-    <title>台北一日遊</title>
-    <link href="../static/attraction.css" rel="stylesheet"/>
-    <link href="../static/same.css" rel="stylesheet"/>
-    <link href="../static/signinup.css" rel="stylesheet"/>
-</head>
-<body onload="getattraction()" ; onselectstart="return false">
-    <div class="title">
-        <nav class="titlemain">
-            <a href="/" class="lefttitle">台北一日遊</a>
-            <div class="space"></div>
-            <a id="righttitle1" onclick="trytobook()">預定行程</a>
-            <a class="righttitle2" onclick="tosignin_up()" id="preSignin">登入/註冊</a>
-            <a class="righttitle2" onclick="tosignin_out()" id="afterSignin">登出系統</a>
-        </nav>
-    </div>
-    <div id="signin">
-        <div class="decorator"></div>
-        <div class="sign_title">登入會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover2()"></div>
-        <input type="text" placeholder="輸入電子信箱" class="email" id="signin_email">
-        <input type="password" placeholder="輸入密碼" class="password" id="signin_password">
-        <input type="submit" value="登入帳戶" class="submit" onclick="goSignin()">
-        <div id="in_message"></div>
-        <button class="switch" onclick="toregister()">還沒有帳戶?點此註冊</button>
-    </div>
-    <div id="signup">
-        <div class="decorator"></div>
-        <div class="sign_title">註冊會員帳號<img src="../static/pic/x-mark.png" class="cross" onclick="darkover2()"></div>
-        <input type="text"  placeholder="輸入姓名" class="username" id="signup_username">
-        <input type="text"  placeholder="輸入電子信箱" class="email" id="signup_email">
-        <input type="password"  placeholder="輸入密碼" class="password" id="signup_password">
-        <input type="submit"  value="註冊新帳戶" class="submit" onclick="goSignup()">
-        <div id="up_message"></div>
-        <button class="switch" onclick="tosignin()">已經有帳戶了?點此登入</button>
-    </div>
-    <div id="booksuccess">
-        <div class="decorator"></div>
-        <div class="sign_title" id="bs_1">預定成功，你可以</div>
-        <button class="switch1" onclick="booknext()" id="bs_2">繼續預定(每次最多預定五個行程)</button>
-        <button class="switch1" onclick="bookover()" id="bs_3">或是前往結帳付款</button>
-    </div>
-    <div id="dark" onclick="darkover2()"></div>
-    <div id="loading"><img src="../static/pic/loading1.gif" id="loadingicon"></div>
-    <div class="upper" id="upper">        
-    <div id="pic">
-        <img src="../static/pic/btn_leftArrow.png" id="pic3" onmouseover="enter1()" onmouseout="leave1()" onclick="switchto1()">
-        <img src="../static/pic/btn_rightArrow.png" id="pic4" onmouseover="enter2()" onmouseout="leave2()" onclick="switchto2()">
-        <div id="ball"></div>
-    </div>
-    <div class="parttwo">
-        <div id="titlename"></div>
-        <div id="subtitle"><span id="mrt"> at </span></div>
-        <form id="booking" onsubmit="tobook()">
-            <div class="b_title">訂購導覽行程</div>
-            <div class="b_slogan">以此景點為中心的一日行程，帶您探索城市角落故事</div>
-            <div class="b_date" >選擇日期：<input id="date" type="date" required></div>
-            <div class="b_time" >選擇時間：
-                <span onclick="changetime1()" class="halfday">
-                    <img src="../static/pic/Ellipse 2.png" id="green1">
-                    <img src="../static/pic/Ellipse 1.png" id="white1">
-                </span><span class="half_day1">上半天</span>
-                <span onclick="changetime2()" class="halfday">
-                    <img src="../static/pic/Ellipse 2.png" id="green2" >
-                    <img src="../static/pic/Ellipse 1.png" id="white2">
-                </span><span class="half_day2">下半天</span>
-            </div>
-            <div class="b_fee">導覽費用：<span id="money2000">新台幣 2000 元</span><span id="money2500">新台幣 2500 元</span></div>
-            <input type="submit" class="btn" value="開始預訂行程">
-        </form>
-    </div>
-    </div>
-    <div id="nodatahere"></div>
-    <div class="line" id="line"></div>
-    <div class="lower" id="lower">
-        <div id="description"></div>
-        <div id="address">景點地址:<div id="address1"></div></div>
-        <div id="transport">交通方式:<div id="transport1"></div></div>
-    </div>    
-    <div class="footer" id="footer">
-        <div class="copyright" id="copyright">COPYRIGHT © 2021 台北一日遊</div>
-    </div>
-    <script type="text/javascript" src="../static/attraction.js"></script>
-    <script type="text/javascript" src="../static/LoginoutRegister.js"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+    
+{% block head %}
+<link href="/static/css/attraction.css" rel="stylesheet"/>
+<link href="/static/css/signinup.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div class="upper" id="upper">        
+<div id="pic">
+    <img src="/static/pic/btn_leftArrow.png" id="pic3" onmouseover="enter1()" onmouseout="leave1()" onclick="switchto1()">
+    <img src="/static/pic/btn_rightArrow.png" id="pic4" onmouseover="enter2()" onmouseout="leave2()" onclick="switchto2()">
+    <div id="ball"></div>
+</div>
+<div class="parttwo">
+    <div id="titlename"></div>
+    <div id="subtitle"><span id="mrt"> at </span></div>
+    <form id="booking" onsubmit="tobook()">
+        <div class="b_title">訂購導覽行程</div>
+        <div class="b_slogan">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+        <div class="b_date" >選擇日期：<input id="date" type="date" required></div>
+        <div class="b_time" >選擇時間：
+            <span onclick="changetime1()" class="halfday">
+                <img src="/static/pic/Ellipse 2.png" id="green1">
+                <img src="/static/pic/Ellipse 1.png" id="white1">
+            </span><span class="half_day1">上半天</span>
+            <span onclick="changetime2()" class="halfday">
+                <img src="/static/pic/Ellipse 2.png" id="green2" >
+                <img src="/static/pic/Ellipse 1.png" id="white2">
+            </span><span class="half_day2">下半天</span>
+        </div>
+        <div class="b_fee">導覽費用：<span id="money2000">新台幣 2000 元</span><span id="money2500">新台幣 2500 元</span></div>
+        <input type="submit" class="btn" value="開始預訂行程">
+    </form>
+</div>
+</div>
+<div id="nodatahere"></div>
+<div class="line" id="line"></div>
+<div class="lower" id="lower">
+    <div id="description"></div>
+    <div id="address">景點地址:<div id="address1"></div></div>
+    <div id="transport">交通方式:<div id="transport1"></div></div>
+</div>  
+{% endblock %}
+      
+{% block js %}
+<script type="text/javascript" src="/static/js/attraction.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
+{% endblock %}
+    

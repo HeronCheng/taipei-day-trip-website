@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -49,6 +49,40 @@ INSERT INTO `attraction` VALUES (1,'新北投溫泉區','養生溫泉','北投�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `bookingdata`
+--
+
+DROP TABLE IF EXISTS `bookingdata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bookingdata` (
+  `booking_number` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `attraction_id` bigint NOT NULL,
+  `attraction_name` varchar(255) NOT NULL,
+  `attraction_address` varchar(255) NOT NULL,
+  `attraction_image` varchar(255) NOT NULL,
+  `bookdate` varchar(255) NOT NULL,
+  `booktime` varchar(255) NOT NULL,
+  `price` bigint NOT NULL,
+  UNIQUE KEY `booking_number` (`booking_number`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `bookingdata_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tripmember` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bookingdata`
+--
+
+LOCK TABLES `bookingdata` WRITE;
+/*!40000 ALTER TABLE `bookingdata` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bookingdata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `member`
 --
 
@@ -63,7 +97,7 @@ CREATE TABLE `member` (
   `follower_count` int NOT NULL DEFAULT '0',
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,62 +106,68 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'小白','test','test',0,'2022-02-27 21:21:47'),(2,'小美','test2','test2',0,'2022-02-27 21:21:57'),(3,'小王','test3','test3',0,'2022-02-27 21:22:06'),(4,'小於','aaa','aaa',0,'2022-02-27 21:22:16');
+INSERT INTO `member` VALUES (1,'小白','test','test',0,'2022-02-12 20:38:02'),(2,'小美','test2','test2',0,'2022-02-12 20:38:19'),(3,'小於','aaa','aaa',0,'2022-02-12 20:38:37'),(4,'小於而','aaaa','aaaa',0,'2022-02-12 20:40:26');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `message`
+-- Table structure for table `tripmember`
 --
 
-DROP TABLE IF EXISTS `message`;
+DROP TABLE IF EXISTS `tripmember`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `message` (
+CREATE TABLE `tripmember` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `member_id` bigint NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `member_id` (`member_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `message`
+-- Dumping data for table `tripmember`
 --
 
-LOCK TABLES `message` WRITE;
-/*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,1,'這家餐廳很好吃','2022-01-29 21:14:40'),(2,1,'服務很好','2022-01-29 21:15:39'),(3,2,'普普','2022-01-29 21:15:42'),(4,3,'交通方便','2022-01-29 21:15:59'),(5,4,'CP值高','2022-01-29 21:16:34'),(6,5,'會想再來','2022-01-29 21:16:55'),(7,1,'水準一如往常','2022-01-29 21:17:27');
-/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+LOCK TABLES `tripmember` WRITE;
+/*!40000 ALTER TABLE `tripmember` DISABLE KEYS */;
+INSERT INTO `tripmember` VALUES (1,'小白','wt@wt.com','wtwt','2022-03-22 16:47:47'),(2,'aaa','aaa@aaa.com','aaaaaa','2022-03-22 18:47:04'),(3,'bbb','bbb@bbb.com','bbbbbb','2022-03-23 23:58:41'),(4,'ccc','ccc@ccc.com','cccccc','2022-03-24 00:00:34'),(5,'小黑','bk@bk.com','bkbk','2022-04-01 21:24:59');
+/*!40000 ALTER TABLE `tripmember` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `temp`
+-- Table structure for table `triporder`
 --
 
-DROP TABLE IF EXISTS `temp`;
+DROP TABLE IF EXISTS `triporder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `temp` (
-  `id` bigint NOT NULL DEFAULT '0',
+CREATE TABLE `triporder` (
+  `order_number` bigint NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `attractions` text NOT NULL,
+  `totalprice` bigint NOT NULL,
   `name` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `follower_count` int NOT NULL DEFAULT '0',
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `status` bigint NOT NULL,
+  PRIMARY KEY (`order_number`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `triporder_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tripmember` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `temp`
+-- Dumping data for table `triporder`
 --
 
-LOCK TABLES `temp` WRITE;
-/*!40000 ALTER TABLE `temp` DISABLE KEYS */;
-INSERT INTO `temp` VALUES (1,'小鄭','test','test',0,'2022-01-28 23:49:20'),(2,'小美','test2','test2',0,'2022-01-28 23:54:26'),(3,'小華','test3','test3',0,'2022-01-28 23:57:38'),(4,'小張','test4','test4',0,'2022-01-28 23:58:28'),(5,'小李','test5','test5',0,'2022-01-28 23:59:05'),(6,'小明','test6','test6',0,'2022-02-08 20:13:26');
-/*!40000 ALTER TABLE `temp` ENABLE KEYS */;
+LOCK TABLES `triporder` WRITE;
+/*!40000 ALTER TABLE `triporder` DISABLE KEYS */;
+INSERT INTO `triporder` VALUES (2022040801140,5,'[{\'attraction\': {\'id\': 7, \'name\': \'關渡、金色水岸、八里左岸自行車道\', \'address\': \'臺北市北投區關渡\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000979.jpg\'}, \'bookingnumber\': 1, \'date\': \'2022-04-04\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 6, \'name\': \'陽明山溫泉區\', \'address\': \'臺北市北投區竹子湖路1之20號\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000985.jpg\'}, \'bookingnumber\': 2, \'date\': \'2022-04-13\', \'time\': \'下半天\', \'singleprice\': 2500}, {\'attraction\': {\'id\': 8, \'name\': \'大安森林公園\', \'address\': \'臺北市大安區新生南路以東、信義路3段以南\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D11/E257/F345/546f42a1-cbfb-49fc-b4d8-c33f1c44190c.jpg\'}, \'bookingnumber\': 3, \'date\': \'2022-04-26\', \'time\': \'上半天\', \'singleprice\': 2000}]',6500,'小黑','bk@bk.com','0956683315',0),(2022040801320,5,'[{\'attraction\': {\'id\': 8, \'name\': \'大安森林公園\', \'address\': \'臺北市大安區新生南路以東、信義路3段以南\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D11/E257/F345/546f42a1-cbfb-49fc-b4d8-c33f1c44190c.jpg\'}, \'bookingnumber\': 4, \'date\': \'2022-04-11\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 3, \'name\': \'士林官邸\', \'address\': \'臺北市士林區福林路60號\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D7/E691/F391/db1eba17-f937-466a-a3be-f2ef35c88971.JPG\'}, \'bookingnumber\': 5, \'date\': \'2022-04-13\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 7, \'name\': \'關渡、金色水岸、八里左岸自行車道\', \'address\': \'臺北市北投區關渡\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000979.jpg\'}, \'bookingnumber\': 7, \'date\': \'2022-04-12\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 8, \'name\': \'大安森林公園\', \'address\': \'臺北市大安區新生南路以東、信義路3段以南\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D11/E257/F345/546f42a1-cbfb-49fc-b4d8-c33f1c44190c.jpg\'}, \'bookingnumber\': 8, \'date\': \'2022-04-27\', \'time\': \'下半天\', \'singleprice\': 2500}]',10500,'小黑','bk@bk.com','0956683315',0),(2022040801490,5,'[{\'attraction\': {\'id\': 1, \'name\': \'新北投溫泉區\', \'address\': \'臺北市北投區中山路、光明路沿線\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D315/E70/F65/1e0951fb-069f-4b13-b5ca-2d09df1d3d90.JPG\'}, \'bookingnumber\': 11, \'date\': \'2022-04-27\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 7, \'name\': \'關渡、金色水岸、八里左岸自行車道\', \'address\': \'臺北市北投區關渡\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000979.jpg\'}, \'bookingnumber\': 12, \'date\': \'2022-04-18\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 8, \'name\': \'大安森林公園\', \'address\': \'臺北市大安區新生南路以東、信義路3段以南\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D11/E257/F345/546f42a1-cbfb-49fc-b4d8-c33f1c44190c.jpg\'}, \'bookingnumber\': 13, \'date\': \'2022-04-18\', \'time\': \'上半天\', \'singleprice\': 2000}]',6000,'小黑','bk@bk.com','0956683315',0),(2022040801570,1,'[{\'attraction\': {\'id\': 2, \'name\': \'大稻埕碼頭\', \'address\': \'臺北市大同區環河北路一段\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D906/E6/F186/809f30db-7079-421f-a625-7baa8ec21874.JPG\'}, \'bookingnumber\': 1, \'date\': \'2022-04-20\', \'time\': \'上半天\', \'singleprice\': 2000}, {\'attraction\': {\'id\': 4, \'name\': \'國立故宮博物院\', \'address\': \'臺北市士林區至善路二段221號\', \'image\': \'https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D14/E810/F21/48d66fbd-1ba3-4efd-837a-3767db5f52e0.jpg\'}, \'bookingnumber\': 2, \'date\': \'2022-04-19\', \'time\': \'上半天\', \'singleprice\': 2000}]',4000,'小白','wt@wt.com','0956683315',0);
+/*!40000 ALTER TABLE `triporder` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -139,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-02 20:46:27
+-- Dump completed on 2022-04-08  2:05:09

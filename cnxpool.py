@@ -10,7 +10,7 @@ dbconfig={
     "host" : "localhost",
     "port" : "3306",
     "user" : "root",
-    "password" : password ,                                            
+    "password" : password,                                            
     "database" : "website",
     "auth_plugin" : "mysql_native_password"
 }

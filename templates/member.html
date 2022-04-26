@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link href="/static/css/member.css" rel="stylesheet"/>
+<link href="/static/css/signinup.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div class="member_title">會員專區</div>
+<div class="main">
+    <div class="leftpart">
+        <div class="member_subtitle"><mark class="highlight">個人資料</mark></div>
+        <table class="member_data">
+            <tr>
+            <th class="member_data">姓名 :</th><td id="member_name"></td>
+            </tr>
+            <tr>
+            <th class="member_data">電子郵件 : </th><td id="member_email"></td>
+            </tr>
+            <tr>
+            <th class="member_data">密碼 :  </th><td id="member_password_outside"><span id="member_password_inside">✽✽✽✽✽</span>
+                <img src="/static/pic/hidden.png" class="secret" onclick="tosee()" id="secret">
+                <img src="/static/pic/eye.png" class="secret" id="see" onclick="nottosee()"></td>
+            </tr>
+        </table>
+        <button onclick="tomodify()" class="modify">修改會員密碼</button>
+    </div>
+    <div class="seperate"></div>
+    <div class="rightpart">
+        <div class="member_subtitle"><mark class="highlight">歷史訂單</mark></div>
+        <div class="tableOutside">
+        <table id="table">
+            <tr>
+              <th class="width1">訂單編號</th>
+              <th class="width2">付款金額</th>
+              <th class="width2">付款狀態</th>
+              <th class="width1">查看訂單</th>
+            </tr>
+          </table>
+        </div>
+          <img src="/static/pic/btn_leftArrow.png" id="pic3" onclick="backto()">
+          <img src="/static/pic/btn_rightArrow.png" id="pic4" onclick="gonext()">
+          <button onclick="tosignin_out()" class="exit">登出系統</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/member.js"></script>
+<script type="text/javascript" src="/static/js/LoginoutRegister.js"></script>
+{% endblock %}

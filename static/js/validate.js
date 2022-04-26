@@ -203,11 +203,12 @@ function gopay(){
         let b_email=document.getElementById("contact_email").value;
         let b_tel=document.getElementById("contact_tel").value;
         
-        
+        let partnerkey;
+        let merchantid;
         let command ={
-            "partner_key": "partner_WqSEiq2i5THFTkJcimYrlQR9oQ1nMhk0tFlcSLxXLzAKtdhjUAgQUSDw",
+            "partner_key": partnerkey,
             "prime": result.card.prime,
-            "merchant_id": "jc16884_CTBC",
+            "merchant_id": merchantid,
             "order": {
                 "price": total_fee,
                 "trip": list,

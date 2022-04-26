@@ -4,6 +4,7 @@
   margin-bottom: 25px;
   padding-top: 54px;
   position: relative;
+  overflow: hidden;
 }
 .outside {
   width: 1200px;
@@ -128,6 +129,18 @@ input {
   font-size: 15px;
   text-align: right;
 }
+#totopicon{
+  position: fixed;
+  width: 50px;
+  bottom: 15%;
+  left: 96%;
+  display: none;
+  opacity: 0.5;
+  z-index: 20;
+}
+#totopicon:hover{
+  cursor: pointer;
+}
 .footer {
   height: 104px;
   background-color: #757575;
@@ -141,7 +154,7 @@ input {
   line-height: 104px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   input {
     width: 315px;
     height: 46px;
@@ -149,9 +162,6 @@ input {
   .welcome {
     height: 300px;
     background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
-  }
-  #signin {
-    top: 10%;
   }
   .picture {
     position: absolute;
@@ -178,9 +188,12 @@ input {
   .slogan {
     width: 900px;
   }
+  #totopicon{
+    left: 95%;
+  }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
   input {
     width: 315px;
     height: 46px;
@@ -214,23 +227,26 @@ input {
   .slogan {
     width: 600px;
   }
+  #totopicon{
+    left: 93%;
+  }
+}
+@media screen and (max-width: 730px){
+  #totopicon{
+    left: 93%;
+  }
 }
 
-@media screen and (max-width: 600px) {
-  .lefttitle {
-    margin-left: 10px;
-  }
+@media screen and (max-width: 650px) {
   .subtitle {
     width: 320px;
     height: 41px;
-    margin-left: 20px;
     z-index: 30;
   }
   .slogan {
     width: 320px;
     height: 22px;
     font-size: 14px;
-    margin-left: 20px;
     z-index: 30;
   }
   input {
@@ -245,12 +261,6 @@ input {
   .welcome {
     height: 280px;
     background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
-  }
-  #signin {
-    left: 22%;
-  }
-  #signup {
-    left: 21%;
   }
   .picture {
     position: absolute;
@@ -272,12 +282,12 @@ input {
   .outside {
     width: 320px;
   }
-}
-@media screen and (max-width: 460px) {
-  #signin {
-    left: 1%;
+  #totopicon{
+    left: 91%;
   }
-  #signup {
-    left: 1%;
+}
+@media screen and (max-width: 500px){
+  #totopicon{
+    left: 85%;
   }
 }

@@ -1,0 +1,328 @@
+body{
+    color: #666666;
+    overflow-x: hidden;
+}
+.main{
+    width: 1200px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+}
+/*標題*/
+.member_title{
+    width: 1200px;
+    font-weight: 700;
+    font-size: 28px;
+    padding-top: 85px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 13px;
+}
+/*分隔線*/
+.seperate{
+    width: 0px;
+    height: 550px;
+    border-left: 1px solid #e8e8e8;
+    display: block;
+    margin-bottom: 60px;
+}
+/*左右區塊*/
+.leftpart{
+    width: 500px;
+    position: relative;
+}
+.rightpart{
+    width: 500px;
+    position: relative;
+}
+.highlight{
+    background-color: transparent;
+    padding: 2px 1px;
+    border-radius: 5px;
+    color:#666666 ; 
+    background: linear-gradient(transparent 40%, rgba(255,255,255,0) 50%, #66aabb85 75%, #66aabbcf 90%, transparent 95%);
+}
+.member_subtitle{
+    font-weight: 700;
+    font-size: 23px;
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.member_data th{
+    width: 190px;
+}
+.member_data td{
+    width: 295px;
+}
+.secret{
+    width: 23px;
+    padding-left: 7px;
+    position: absolute;
+    top: 16px;
+}
+.secret:hover{
+    cursor: pointer;
+}
+#see{
+    display: none;
+}
+#member_password_outside{
+    position: relative;
+    padding-left: 7px;
+}
+#member_password_inside{
+    width: 103px;
+    display: inline-block;
+}
+.tableOutside{
+    height: 349px;
+}
+table{
+    border-collapse: collapse;  
+    border-spacing: 0;
+    padding:10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+table th,td{
+    border-top: 1px solid #666666;
+    border-bottom: 1px solid #666666 ;
+}
+table td{
+    height: 55px;
+}
+table th{
+    height: 55px;
+    background-color: #eee;
+}
+.width1{
+    width: 170px;
+}
+.width2{
+    width: 150px;
+}
+.modify{
+    background: #448899;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 17px;
+    line-height: 16px;
+    border: none;
+    width: 145px;
+    height: 36px;
+    position: absolute;
+    top: 48%;
+    left: 70%;
+}
+.modify:hover{
+    cursor: pointer;
+}
+#pic3 {
+    position: absolute;
+    z-index: 20;
+    top: 48%;
+    left: -7%;
+    opacity: 0.5;
+    display: none;
+}
+#pic3:hover {
+    cursor: pointer;
+}
+#pic4 {
+    position: absolute;
+    z-index: 20;
+    top: 47%;
+    left: 100%;
+    opacity: 0.5;
+    display: none;
+}
+#pic4:hover {
+    cursor: pointer;
+}
+/*下方登出按鈕*/
+.exit{
+    background: #448899;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 19px;
+    line-height: 16px;
+    border: none;
+    width: 145px;
+    height: 36px;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+}
+.exit:hover{
+    cursor: pointer;
+}
+.buttonside{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+/*修改密碼視窗*/
+.revise{
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0px 4px 60px #aaaaaa;
+    position: fixed;
+    left: 39%;
+    z-index: 35;
+    width: 340px;
+    height: 275px;
+    top:0%;
+    display: none;
+    animation-name: movedown2;
+    animation-duration: 500ms;
+    animation-delay: 0ms;
+    animation-fill-mode: both;
+    animation-play-state:running;
+    animation-timing-function: ease-out;
+}
+@keyframes movedown2 {
+    0% {
+      top: 0%;
+    }
+    25% {
+      top: 3%;
+    }
+    50% {
+      top: 6%;
+    }
+    100% {
+      top: 9%;
+    }
+  }
+  #revise_message{
+    display: none;
+  }
+
+  /*RWD區域*/
+  @media screen and (max-width: 1200px) {
+    .main{
+        width: 900px;
+    }
+    .member_title{
+        width: 900px;
+    }
+    .leftpart{
+        width: 400px;
+    }
+    .rightpart{
+        width: 400px;
+    }
+    .width1{
+        width: 130px;
+    }
+    .width2{
+        width: 100px;
+    }
+    .modify {
+        left: 64%;
+    }
+    .titlemain {
+        width: 900px;
+    }
+  }
+  
+  @media screen and (max-width: 930px) {
+    .main{
+        width: 500px;
+        display: block;
+    }
+    .seperate{
+        display: none;
+    }
+    .leftpart{
+        height: 340px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .modify {
+        left: 29%;
+        top: 80%;
+    }
+    .rightpart{
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 110px;
+    }
+    .exit{
+        position: absolute;
+        bottom: 10%;
+        right: 31%;
+    }
+    .member_title{
+        width: 500px;
+    }
+    .titlemain {
+        width: 500px;
+    }
+    #pic4{
+        top: 49%;
+    }
+    #pic3{
+        top: 49%;
+        left: -9%;
+    }
+    #revise{
+        left: 31%;
+    }
+  }
+  
+  @media screen and (max-width: 670px) {
+    .member_data th {
+        width: 120px;
+    }
+    .member_data td {
+        width: 190px;
+    }
+    .width1 {
+        width: 70px;
+    }
+    .width2 {
+        width: 61px;
+    }
+    .main{
+        width: 350px;
+    }
+    .member_title{
+        width: 350px;
+    }
+    .titlemain {
+        width: 350px;
+    }
+    .leftpart{
+        width: 350px;
+    }
+    .rightpart{
+        width: 350px;
+    }
+    #pic4{
+        left: 95%;
+    }
+    #revise{
+        left: 24%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    #revise{
+        left: 15%;
+    }
+  }
+  @media screen and (max-width: 415px) {
+      #pic3{
+        left: -2%;
+      }
+      #pic4{
+        left: 89%;
+      }
+      #revise{
+        left: 2%;
+    }
+  }

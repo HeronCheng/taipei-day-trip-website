@@ -13,6 +13,8 @@ let forth=document.getElementById("forth");
 let nodatahere=document.getElementById("nodatahere");
 let footer=document.getElementById("footer");
 
+//抓頁面資料
+checkStatus()
 
 function checkStatus(){
     //檢查會員登入狀態
@@ -26,6 +28,8 @@ function checkStatus(){
             window.location.href = "/";
         }
         else{
+            preSignin.style.display="none";
+            afterSignin.style.display="block"
             //檢查購物車內的數量
             let req=new XMLHttpRequest();
             req.open("get","/api/booking");
@@ -36,7 +40,7 @@ function checkStatus(){
             if(count != null){
                 let img=document.createElement("img");
                 img.setAttribute("class","bookcarticon");
-                img.src="../static/pic/icons"+count+".png"
+                img.src="/static/pic/icons"+count+".png"
                 let position=document.getElementById("righttitle1");
                 position.appendChild(img);
                 position.style.marginRight="25px";
@@ -151,7 +155,7 @@ function checkStatus(){
                         text5.appendChild(b_address);
 
                         let delete_icon=document.createElement("img");
-                        delete_icon.src="../static/pic/icon_delete.png";
+                        delete_icon.src="/static/pic/icon_delete.png";
                         delete_icon.setAttribute("class","delete_icon")
                         delete_icon.setAttribute("id","delete_icon"+datanumber)
                         delete_icon.setAttribute("onclick","deletebooking("+datanumber+")");
@@ -190,10 +194,10 @@ function deletebooking(number){
     delete_req.onload=function(){
         let deleteData=JSON.parse(delete_req.responseText);
         if(deleteData.booknumber==0){
-            window.location.href = "/booking";
+            document.querySelector("#loading").style.display="flex";
+            location.reload()
             user_name=document.getElementById("username");
             user_name.innerHTML=username;
-            // first.innerHTML="";
             first_part.style.height="220px";
             line1.style.display="none";
             line2.style.display="none";
@@ -207,6 +211,7 @@ function deletebooking(number){
             nodatahere.style.display="block";
             nodatahere.innerHTML="目前沒有任何待預訂的行程";
             footer.style.height="865px";
+            
         }
         else{
             let deletepart=document.getElementById("first"+number);
@@ -215,24 +220,9 @@ function deletebooking(number){
     }
 }
 
-//登出處理
-function tosignin_out(){
-    let delete_req=new XMLHttpRequest();
-    delete_req.open("delete","/api/booking");
-    delete_req.withCredentials = true;
-    delete_req.send();
-    delete_req.onload=function(){
-        let signout_req=new XMLHttpRequest();
-        signout_req.open("delete","/api/user");
-        signout_req.withCredentials = true;
-        signout_req.send();
-        signout_req.onload=function(){
-            let signoutData=JSON.parse(signout_req.responseText);
-            if(signoutData!=null){
-                window.location.href = "/";
-            }
-    }
-    }
+//進入會員頁面
+function tomember(){
+    window.location.href = "/member";
 }
 
 //點選導覽列的 預定行程 處理
