@@ -148,7 +148,6 @@ function gopay(){
 
     // 取得 TapPay Fields 的 status
     const tappayStatus = TPDirect.card.getTappayFieldsStatus()
-    console.log(tappayStatus)
 
     // 確認是否可以 getPrime
     if (tappayStatus.canGetPrime === false) {

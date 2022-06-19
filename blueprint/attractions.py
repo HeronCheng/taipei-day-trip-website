@@ -4,7 +4,6 @@ from cnxpool import cnxpool
 from blueprint.definition import loops
 
 attractions=Blueprint("attractions",__name__)
-# CORS(attractions)
 
 #取得景點資料列表
 @attractions.route("/api/attractions",methods=["GET"])
@@ -23,8 +22,7 @@ def getattractions():
         return jsonify({
             "error":True,
             "message":"400 客戶端錯誤"
-        }),400
-     
+        }),400     
     elif keyword == None and page != None: 
         nextpage=str(int(page)+1)
         number=int(page)*12
@@ -97,4 +95,3 @@ def getattractions():
                 cnx.close()
                 return loops(a=12,result=result,nextpage=nextpage)
             
-

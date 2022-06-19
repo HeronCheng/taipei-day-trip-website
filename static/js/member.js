@@ -1,6 +1,4 @@
-let userpassword;
-let oldorder_number;
-let this_ordernumber;
+let userpassword, oldorder_number, this_ordernumber;
 
 checkStatus()
 

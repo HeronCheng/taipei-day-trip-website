@@ -1,7 +1,4 @@
-let username;
-let useremail;
-let statusData;
-let user_name;
+let username, useremail, statusData, user_name;
 let first=document.getElementById("first");
 let first_part=document.getElementById("first_part");
 let line1=document.getElementById("line1");
@@ -235,4 +232,3 @@ function trytobook(){
         window.location.href = "/booking";
     }
 }
-
