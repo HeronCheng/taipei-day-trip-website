@@ -6,7 +6,7 @@ let statusData;
 //抓每一頁要呈現的資料
 getattraction()
 
-//設定不行輸入過去日期
+//設定不能輸入過去日期
 let date_now=new Date();
 let year=date_now.getFullYear();
 let month=date_now.getMonth()+1 < 10 ? "0"+(date_now.getMonth()+1) : (date_now.getMonth()+1)

@@ -5,8 +5,6 @@ import jwt
 
 status=Blueprint("status",__name__)
 
-# CORS(status)
-
 #註冊
 @status.route("/api/user",methods=["POST"])
 def signup():

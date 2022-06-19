@@ -27,7 +27,6 @@ function checkStatus(){
             request.send();
             request.onload=function(){
                 let data=JSON.parse(request.responseText);
-                console.log(data.data)
                 document.getElementById("total_fee").innerHTML=data.data["total_price"];
                 document.getElementById("the_order").innerHTML=data.data["number"];
                 document.getElementById("contactname").innerHTML=data.data["contact"]["name"];

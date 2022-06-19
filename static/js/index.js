@@ -158,7 +158,6 @@ function query(anotherpage){
         if(result.error==true){document.getElementById("attractions").innerHTML="查無景點資料";}
         let url;
         queryNextpage=result.nextPage;
-        console.log(queryNextpage)
         let fragment=document.createDocumentFragment();
         function length(obj) {
             return Object.keys(obj).length;
@@ -213,7 +212,6 @@ function query(anotherpage){
     document.addEventListener("scroll", lazyLoad2)
     function lazyLoad2() {
         if (window.pageYOffset + window.innerHeight >= document.documentElement.scrollHeight && loading==false) {    
-            console.log(data)
             if (queryNextpage==null){document.removeEventListener("scroll", lazyLoad2)}
             else{query(queryNextpage)};
         }  

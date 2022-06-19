@@ -5,7 +5,6 @@ import jwt
 
 booking=Blueprint("booking",__name__)
 
-# CORS(booking)
 
 #取得尚未確認下單的預定行程
 @booking.route("/api/booking",methods=["GET"])
