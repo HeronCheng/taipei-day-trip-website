@@ -88,7 +88,7 @@
   
   <br/>
   
-- Responsive web design  
+- Responsive web design(RWD)  
   
   <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip7.gif" alt="demo7" width="450px" height="300x"/> 
   
