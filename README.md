@@ -47,10 +47,50 @@
 - Database 
   - MySQL
   - Database Schema
-  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/databaseSchema.PNG" alt="Database Schema" width="600px" height="500px"/> 
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/databaseSchema.PNG" alt="Database Schema" width="500px" height="400px"/> 
 
 ## Main Features
 
+- Infinite scroll and lazy loading 
+
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip1.gif" alt="demo1" width="450px" height="300x"/>  
+  
+  <br/>
+ 
+- Users can easily type keywords to find their destinations.
+
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip2.gif" alt="demo2" width="450px" height="300x"/> 
+  
+  <br/>
+  
+- Click on the attraction, and users can find detailed information and related pictures.
+
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip3.gif" alt="demo3" width="450px" height="300x"/> 
+
+  <br/>
+  
+- Users can sign in/ sign up to use more services.
+  
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip4.gif" alt="demo4" width="450px" height="300x"/> 
+  
+  <br/>
+  
+- After signing in, users can book their trips and pay online by TapPay.  
+  
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip5.gif" alt="demo5" width="450px" height="300x"/> 
+  
+  <br/>
+  
+- After signing in, users can revise their password and check their order history.
+  
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip6.gif" alt="demo6" width="450px" height="300x"/> 
+  
+  <br/>
+  
+- Responsive web design  
+  
+  <img src="https://github.com/HeronCheng/taipei-day-trip-website/blob/main/static/pic/Taipei-day-trip7.gif" alt="demo7" width="450px" height="300x"/> 
+  
 ## Contact
 
 :cat2: 鄭羽筑 Yu-Chu, Cheng
