@@ -26,9 +26,10 @@
 
 ## Frontend Technique
 
+- Vanilla JavaScript
 - HTML
 - CSS
-- Vanilla JavaScript
+- Responsive Web Design(RWD)
 - AJAX
 - Third Party Library
   -  TapPay
