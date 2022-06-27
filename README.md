@@ -3,10 +3,6 @@
 
 :link: Website URL : http://18.180.51.21:3000/  
 
-:art: [Figma Prototype](https://www.figma.com/file/CeFwqBSbNWZbWz2ih4YS6z)
-
-:notebook: [API doc](https://app.swaggerhub.com/apis-docs/padax/taipei-trip/1.0.0)
-
 - Test account : aaa@aaa.com   <br/>
 - Test password : aaaaaa 
 - Test credit card : 
