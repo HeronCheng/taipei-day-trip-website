@@ -1,7 +1,7 @@
 # Taipei-day-trip-website
 :minibus: Taipei-day-trip-website is a travel e-commerce website, you can choose your trip from more than fifty attractions and pay online.
 
-:link: Website URL : http://18.180.51.21:3000/  
+:link: Website URL (The website is no longer available.)
 
 - Test account : aaa@aaa.com   <br/>
 - Test password : aaaaaa 
